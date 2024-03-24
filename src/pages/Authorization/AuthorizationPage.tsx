@@ -1,23 +1,41 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState } from 'react'
 import styles from './AuthorizationPage.module.css'
+import { useAuth } from '../../utils/contextes/AuthContext/useAuth';
+import { LoginInputGroup } from './components/LoginInputGroup';
+import { ConfirmInputGroup } from './components/ConfirmInputGroup';
 
 export const AuthorizationPage: React.FC = () => {
 
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const { signIn, isLogining, confirm, refresh } = useAuth();
+
+  const formHandler = () => {
+    if(isLogining)
+      return confirm(otp);
+    return signIn(email);
+  }
+
+  
+  React.useEffect(() => {
+    if (localStorage.getItem('access')) {
+      console.log('asdasd')
+      refresh();
+    }
+  }, [])
 
   return <>
     <div className={styles.loginPage}>
       <div className={styles.loginCard}>
         <h2 className={styles.loginCard__header}>АвторизА́ция</h2>
-        <form action="" method="post">
-          <div className={styles.inputForm}>
-            <label className={styles.label} htmlFor="email">Email</label>
-            <input className={styles.input} type="email" name="email" id="email"
-              placeholder="example@scalartis.com" />
-          </div>
+        <div>
+          {!isLogining ? <LoginInputGroup styles={styles} email={email} setEmail={setEmail}/> :
+          <ConfirmInputGroup styles={styles} otp={otp} setOtp={setOtp} email={email}/>}
           <div className={styles.loginCard__footer}>
-            <button className={styles.button}>Отправить</button>
+            <button className={styles.button} onClick={() => formHandler()}>Отправить</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </>
