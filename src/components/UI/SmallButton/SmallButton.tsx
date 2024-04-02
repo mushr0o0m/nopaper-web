@@ -1,13 +1,13 @@
 import {FC} from 'react';
 import './SmallButton.css'
 
-export interface ButtonProps {
+export interface SmallButtonProps {
     children: string,
     className?: string,
     isColored: boolean
 }
 
-const Button: FC<ButtonProps> = ({
+const Button: FC<SmallButtonProps> = ({
                     children,
                     className,
                     isColored,
