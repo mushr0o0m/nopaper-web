@@ -1,0 +1,15 @@
+.sound--btn {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    opacity: 30%;
+}
+
+.sound--texture {
+    mask-image: url('/public/images/Shapes/sound-shape.svg');
+    -webkit-mask-image: url('/public/images/Shapes/sound-shape.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 68px 52px;
+}
