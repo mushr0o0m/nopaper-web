@@ -14,7 +14,12 @@
 
 :root {
   --alert-wrong: rgba(233, 91, 81, 100);
-  --success: rgba(106, 178, 122, 100);
+  --gray: #6b6c6f;
+  --alert: #e95b51;
+  --success: #6ab37a;
+  --purple: #a482bb;
+  --green: #90bfbe;
+  --blue: #a5bed7;
   --light-grey: rgba(237, 237, 238, 100);
   --mid-grey: rgba(167, 169, 172, 100);
   --dark-grey: rgba(107, 108, 111, 100);
@@ -36,9 +41,14 @@ body {
   font-family: 'Chitalka', sans-serif;
   font-style: normal;
   color: var(--dark-grey);
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
+
+* {
+  box-sizing: border-box;
+  font-family: Chitalka, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  margin: 0;
+  font-size: inherit;
+}
+
