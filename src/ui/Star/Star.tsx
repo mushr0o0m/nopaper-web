@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {ColorType} from "../../Types/color-type.enum.ts";
+import {ColorType} from "../../utils/models/colorTypeEnum/color-type.enum.ts";
 import './Star.css'
 
 export interface StarProps {

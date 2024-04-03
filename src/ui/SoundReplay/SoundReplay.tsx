@@ -1,4 +1,4 @@
-import {ColorType} from "../../Types/color-type.enum.ts";
+import {ColorType} from "../../utils/models/colorTypeEnum/color-type.enum.ts";
 import {FC} from "react";
 import './SoundReplay.css'
 

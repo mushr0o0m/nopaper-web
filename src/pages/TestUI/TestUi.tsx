@@ -1,17 +1,16 @@
-import './App.css'
-import Button from "./components/UI/Button/Button.tsx";
-import SmallButton from "./components/UI/SmallButton/SmallButton.tsx";
-import Pointer from "./components/UI/Pointer/Pointer.tsx";
-import {ColorType} from "./components/Types/color-type.enum.ts";
-import Star from "./components/UI/Star/Star.tsx";
-import Word from "./components/UI/Word/Word.tsx";
-import {LevelType} from "./components/UI/Dot/Dot.tsx";
-import ProgressBar from "./components/UI/ProgressBar/ProgressBar.tsx";
-import ScoreBar from "./components/UI/ScoreBar/ScoreBar.tsx";
-import SoundReplay from "./components/UI/SoundReplay/SoundReplay.tsx";
-import Sound from "./components/UI/Sound/Sound.tsx";
+import Button from "../../ui/Button/Button.tsx";
+import SmallButton from "../../ui/SmallButton/SmallButton.tsx";
+import Pointer from "../../ui/Pointer/Pointer.tsx";
+import {ColorType} from "../../utils/models/colorTypeEnum/color-type.enum.ts";
+import Star from "../../ui/Star/Star.tsx";
+import Word from "../../ui/Word/Word.tsx";
+import {LevelType} from "../../ui/Dot/Dot.tsx";
+import ProgressBar from "../../ui/ProgressBar/ProgressBar.tsx";
+import ScoreBar from "../../ui/ScoreBar/ScoreBar.tsx";
+import SoundReplay from "../../ui/SoundReplay/SoundReplay.tsx";
+import Sound from "../../ui/Sound/Sound.tsx";
 
-function App() {
+function TestUi() {
 
   return (
     <>
@@ -53,4 +52,4 @@ function App() {
   )
 }
 
-export default App
+export default TestUi
