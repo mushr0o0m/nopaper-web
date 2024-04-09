@@ -9,6 +9,7 @@ const $api = axios.create({
 
 $api.interceptors.request.use((config) => {
   config.headers.Authorization = `Bearer ${localStorage.getItem('access')}`
+  config.headers['X-Account-Id'] = `${localStorage.getItem('userId')}`
   return config;
 })
 

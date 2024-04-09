@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { config } from '../config'
-import { AuthResponse } from '../models/response/AuthResponse';
+import { AuthResponse, GuestResponse } from '../models/response/AuthResponse';
 // import $api from '../http';
 import { User } from '../models/User';
 
@@ -23,3 +23,8 @@ export const refreshUser = async (): Promise<AxiosResponse<Pick<AuthResponse, 'a
   )
 }
 
+export const guestUser = async (): Promise<AxiosResponse<GuestResponse>> => {
+  return (
+    axios.post<GuestResponse>(`${config.API_URL}/api/auth/guest/`)
+  )
+}

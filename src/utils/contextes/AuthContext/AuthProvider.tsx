@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { loginUser, confirmUser, refreshUser } from "../../services/AuthenticateUser";
+import { loginUser, confirmUser, refreshUser, guestUser } from "../../services/AuthenticateUser";
 import { AuthContext } from "./AuthContext";
 import { AxiosError } from "axios";
 import { User } from "../../models/User";
@@ -57,10 +57,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = (({ children }) => {
     }
   }
 
+  const guest = async (): Promise<void> => {
+    try {
+      const response = await guestUser();
+      localStorage.setItem('userId', response.data.userId);
+    } catch (error) {
+      console.log((error as AxiosError)?.response?.data || (error as Error).message);
+      throw error;
+    }
+  }
+
   const value = {
     signIn,
     confirm,
     refresh,
+    guest,
     isLogining,
     isAuth
   }
