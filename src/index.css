@@ -41,6 +41,7 @@ body {
   font-family: 'Chitalka', sans-serif;
   font-style: normal;
   color: var(--dark-grey);
+  background: url('/src/assets/backgrounds/bg-1.png');
 }
 
 * {
