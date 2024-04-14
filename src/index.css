@@ -41,14 +41,16 @@ body {
   font-family: 'Chitalka', sans-serif;
   font-style: normal;
   color: var(--dark-grey);
-  background: url('/src/assets/backgrounds/bg-1.png');
+  background: url('/src/assets/backgrounds/bg-1.jpg');
+  font-family: Chitalka;
+  font-size: 48px;
+  line-height: 60px;
+  min-width: 1440px;
 }
 
 * {
   box-sizing: border-box;
   font-family: Chitalka, sans-serif;
-  font-weight: normal;
-  font-style: normal;
   margin: 0;
   font-size: inherit;
 }

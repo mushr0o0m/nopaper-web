@@ -1,0 +1,32 @@
+.main{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main__body{
+  display: flex;
+  justify-content: center;
+}
+
+.body__text{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.title{
+  font-size: 96px;
+  font-weight: bold;
+}
+
+.descr{
+  font-size: 36px;
+}
+
+.menSvg{
+  margin-right: 122px;
+}
