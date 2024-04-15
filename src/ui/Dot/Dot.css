@@ -9,3 +9,12 @@
 .dot--score-correct {
     z-index: 10;
 }
+
+.dot{
+    vertical-align: top;
+}
+
+.dotElement{
+    height: 14px;
+    width: 14px;
+}

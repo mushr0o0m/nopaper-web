@@ -55,3 +55,9 @@ body {
   font-size: inherit;
 }
 
+.container {
+  max-width: 1416px;
+  padding: 0 24px;
+  margin: 0 auto;
+}
+

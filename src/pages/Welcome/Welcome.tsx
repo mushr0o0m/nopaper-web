@@ -7,7 +7,7 @@ export const Welcome: React.FC = () => {
 
 
   return (
-    <div className={styles.container}>
+    <div className='container'>
       <section className={styles.section}>
         <p className={styles.section__text}>
           дорогие родители!<br />
