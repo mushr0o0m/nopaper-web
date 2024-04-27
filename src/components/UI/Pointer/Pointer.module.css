@@ -1,4 +1,4 @@
-.pointer--texture {
+.pointer {
     mask-image: url('/public/images/Shapes/pointer-shape.svg');
     -webkit-mask-image: url('/public/images/Shapes/pointer-shape.svg');
     mask-repeat: no-repeat;

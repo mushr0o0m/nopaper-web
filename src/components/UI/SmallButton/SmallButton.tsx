@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import './SmallButton.css'
+import styles from './SmallButton.module.css'
 
 export interface SmallButtonProps {
     children: string,
@@ -13,9 +13,9 @@ const Button: FC<SmallButtonProps> = ({
                     isColored,
                     ...props}) => {
 
-    const rootClasses = ['btn', 'btn-small', className];
+    const rootClasses: string[] = [styles.small, className ?? ''];
     if (isColored) {
-        rootClasses.push('btn-colored');
+        rootClasses.push(styles.colored);
     }
 
     return (
@@ -28,7 +28,7 @@ const Button: FC<SmallButtonProps> = ({
                 <path d="M6 3.99999L146 0.869873L160.5 55.5L1.5 61.5L6 3.99999Z" stroke="url(#pattern0)"
                       strokeMiterlimit="10" strokeDasharray="2 2"/>
 
-                <text x='20%' y='70%' fill={isColored ? '#EDEDEE' : '#6B6C6F'} className='btn-label'>{children}</text>
+                <text x='20%' y='70%' fill={isColored ? '#EDEDEE' : '#6B6C6F'} className={styles.label}>{children}</text>
             </svg>
         </button>
     );

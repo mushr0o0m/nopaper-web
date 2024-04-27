@@ -1,11 +1,11 @@
-.replay--btn {
+.btn {
     background: none;
     border: none;
     outline: none;
     box-shadow: none;
 }
 
-.replay--texture {
+.texture {
     mask-image: url('/public/images/Shapes/sound-replay-shape.svg');
     -webkit-mask-image: url('/public/images/Shapes/sound-replay-shape.svg');
     mask-repeat: no-repeat;

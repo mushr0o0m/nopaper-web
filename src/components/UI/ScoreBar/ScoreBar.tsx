@@ -1,6 +1,6 @@
 import Dot, {LevelType} from "../Dot/Dot.tsx";
 import {FC} from "react";
-import './ScoreBar.css'
+import styles from './ScoreBar.module.css';
 
 export interface ScoreBarProps {
     recentLevel: number,
@@ -23,7 +23,7 @@ const ProgressBar: FC<ScoreBarProps> = ({
     }
 
     return (
-        <div {...props} className={['score-bar', className ?? ''].join(' ')}>
+        <div {...props} className={[styles.scoreBar, className ?? ''].join(' ')}>
             {levels.map((level): JSX.Element => {
                 return <Dot dotType={level} className={['dot--score',level == LevelType.Correct ? 'dot--score-correct' : ''].join(' ')}/>;
             })}

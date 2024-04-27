@@ -1,4 +1,4 @@
-.star--texture {
+.texture {
     mask-image: url('/public/images/Shapes/star-shape.svg');
     -webkit-mask-image: url('/public/images/Shapes/star-shape.svg');
     mask-repeat: no-repeat;
