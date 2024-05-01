@@ -1,5 +1,10 @@
 .levelSection{
   display: flex;
   padding: 195px 0;
+  gap: 80px;
+}
+
+.levelRow{
+  display: flex;
   gap: 56px;
 }

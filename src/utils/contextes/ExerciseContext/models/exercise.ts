@@ -1,4 +1,4 @@
-interface IPack {
+export interface IPack {
   id: string
   name: string
   version: number
@@ -7,7 +7,7 @@ interface IPack {
   status: string
 }
 
-interface ILevel {
+export interface ILevel {
   id: string
   pack: IPack['id']
   name: string
@@ -17,13 +17,13 @@ interface ILevel {
   updated: string
 }
 
-interface IAudio {
+export interface IAudio {
   id: string
   task: ITask['id']
   file: string // url
 }
 
-interface IImage {
+export interface IImage {
   id: string
   task: ITask['id']
   file: string // url
@@ -31,7 +31,7 @@ interface IImage {
   scale: number // 0.1 - 0.5
 }
 
-interface ITextOption {
+export interface ITextOption {
   id?: string
   rightAnswer: boolean
   text: string
@@ -39,21 +39,21 @@ interface ITextOption {
   approximatedTextWidth: number
 }
 
-interface IGroupSet {
+export interface IGroupSet {
   id: string
   name: string
   userOrderingIndex: number
   level: ILevel['id']
 }
 
-interface ITaskGroup {
+export interface ITaskGroup {
   id: string
   name: string
   set: IGroupSet['id']
   premium: boolean
 }
 
-interface ISimpleTask {
+export interface ISimpleTask {
   id: string
   type: 0 | 1 | 2
   audio: IAudio
@@ -63,22 +63,22 @@ interface ISimpleTask {
   orderingIndex: number
 }
 
-interface IQuestionWithImageTask extends Omit<ISimpleTask, 'type'> {
+export interface IQuestionWithImageTask extends Omit<ISimpleTask, 'type'> {
   type: 3 | 4 | 7
   question: string
 }
 
-interface IImageMatchTask extends Omit<ISimpleTask, 'answerOptions' | 'type'> {
+export interface IImageMatchTask extends Omit<ISimpleTask, 'answerOptions' | 'type'> {
   type: 5
   wordToMatch: ITextOption
 }
 
-interface ITextTask extends Omit<ISimpleTask, 'type'> {
+export interface ITextTask extends Omit<ISimpleTask, 'type'> {
   type: 6
   question: string
 }
 
-interface IIntroTask {
+export interface IIntroTask {
   id: string
   type: 8
   question: string
@@ -89,14 +89,10 @@ interface IIntroTask {
   answerOptions?: ITextOption[]
 }
 
-interface IReadingTask extends Omit<ISimpleTask, 'type'> {
+export interface IReadingTask extends Omit<ISimpleTask, 'type'> {
   type: 9
   question: string
   description: string
 }
 
-type ITask = ISimpleTask | IQuestionWithImageTask | IImageMatchTask | ITextTask | IIntroTask | IReadingTask
-
-
-
-
+export type ITask = ISimpleTask | IQuestionWithImageTask | IImageMatchTask | ITextTask | IIntroTask | IReadingTask

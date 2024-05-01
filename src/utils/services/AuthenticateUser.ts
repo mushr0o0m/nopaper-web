@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { config } from '../config'
 import { AuthResponse, GuestResponse } from '../models/response/AuthResponse';
 // import $api from '../http';
-import { User } from '../models/User';
+import { User } from '../models/user/User';
 
 export const loginUser = async (email: string): Promise<AxiosResponse<Pick<User, 'id'>>> => {
   return axios.post<Pick<User, 'id'>>(`${config.API_URL}/api/auth/login/`, { email });

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { loginUser, confirmUser, refreshUser, guestUser } from "../../services/AuthenticateUser";
 import { AuthContext } from "./AuthContext";
 import { AxiosError } from "axios";
-import { User } from "../../models/User";
+import { User } from "../../models/user/User";
 
 interface AuthProviderProps {
   children: React.ReactNode;
