@@ -1,10 +1,22 @@
+interface IExercisePacks {
+  count: number;
+  next: null;
+  previous: null;
+  results: IPack[];
+}
+
 interface IPack {
   id: string
   name: string
-  version: number
-  publicData: string
-  privateData: string
   status: string
+  version: number
+  publicDataJson: string
+  privateDataJson: string
+  orderingIndex: number
+}
+
+interface IData {
+  sets: 
 }
 
 interface ILevel {
@@ -96,6 +108,7 @@ interface IReadingTask extends Omit<ISimpleTask, 'type'> {
 }
 
 type ITask = ISimpleTask | IQuestionWithImageTask | IImageMatchTask | ITextTask | IIntroTask | IReadingTask
+
 
 
 

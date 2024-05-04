@@ -7,7 +7,7 @@ interface CheckAuthProps {
 
 export const CheckAuth: React.FC<CheckAuthProps> = ({ children }) => {
   if(localStorage.getItem('access') || localStorage.getItem('userId')){
-    console.log('hi gitler')
+    console.log('authorizated!')
   }
 
   return children;
