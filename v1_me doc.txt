@@ -1,0 +1,101 @@
+***
+
+1. Публичные эндпоинты для Exercise Packs
+(1.1) GET /api/v1/public/exercise_packs/ - для получения списка активных Exercise Packs
+(1.2) GET /api/v1/public/exercise_packs/{id}/ - для получения конкретного Exercise Pack по ID
+
+2. Пользовательские эндпоинты для Exercise Packs
+(2.1) GET /api/v1/me/exercise_packs/ - для получения списка активных Exercise Packs 
+(2.2) GET /api/v1/me/exercise_packs/{id}/ - для получения конкретного Exercise Pack по ID
+
+Эндпоинты (1.*) и (2.*) схожи, за исключением полей privateData и privateDataJson, который доступны только для эндпонтов (2.*) в зависимости от наличия премиум подписки у пользователя
+
+Для веб весь нужный контент находится в полях publicDataJson и privateDataJson. 
+
+***
+
+3. Общая структура publicDataJson/privateDataJson
+
+Каждый пак (Exercise Pack) состоит из уровней (Exercise Level), список уровней для данного пака хранится в поле "levels" объекта publicDataJson/privateDataJson
+
+А каждый уровень (Exercise Level) в свою очередь состоит из наборов (Exercise Set), наборы хранятся в поле "sets" объекта publicDataJson/privateDataJson
+
+А в наборах мы храним группы заданий (Exercise Group), они в поле "groups"
+
+И уже в группах - сами задания/звездочки (Exercise Task), поле - "tasks"
+
+В итоге общая схема вложенности выглядит так:
+Пак:
+    1. Уровень 1:
+        1. Набор 1:
+            1. Группа 1:
+                1. Звездочка 1
+                2. Звездочка 2
+                ...
+            ...
+         ...
+    2. Уровень 2:
+        ...
+
+***
+
+3.1. Уровни (Exercise Levels):
+"id" - идентификатор уровня 
+"name" - название уровня
+"description" - описание уровня,
+"pack" - пак к которому относится данный уровень
+"orderingIndex" - индекс упорядочивания
+
+***
+
+3.2. Наборы (Exercise Sets):
+"id" - идентификатор набора
+"level" - уровень к которому относится данный набор
+"orderingIndex" - индекс упорядочивания
+
+***
+
+3.3. Группы заданий (Exercise Groups):
+"id" - идентификатор группы заданий
+"set" - набор к которой относится данная группа заданий
+"premium" -  boolean, флаг для отличия премиум групп заданий от free
+"audioFile" - аудио файл группы 
+"lottieFile" - lottie файл группы
+"orderingIndex" - индекс упорядочивания
+
+***
+
+3.4. Задания/Звездочки (Exercise Tasks):
+"id" - идентификатор звездочки
+"type" - тип, число от 0 до 9
+"group" - группа к которой относится данная звездочка
+"audio" - список аудио файлов звездочки
+"images" - список картинок звездочки
+"question" - текст вопроса звездочки (если есть)
+"description" - описание звездочки
+"wordToMatch" - объект типа Answer Option 
+"answerOptions" - список вариантов ответов (объекты типа Answer Option)
+"orderingIndex" - индекс упорядочивания
+
+————
+
+Сохранение и получение прогресса пользователя:
+
+ При получении информации о пользователе через /api/v1/me/, помимо всего прочего, приходит объект applicationState, он имеет следующий интерфейс:
+interface IApplicationState {
+  progress: IUserProgress
+  currentSetId: IGroupSet['id']
+  selectedLevelId: ILevel['id'] | null
+  onBoardPassed: boolean
+  visitedMainScreen: boolean
+  hasEverLoggedIn: boolean
+  introVideoPlayed: boolean
+  secondIntroVideoPlayed: boolean
+}
+
+При разработке веб-приложения интересны следующие поля:
+1) progress — Объект, в котором ключ это id задания (ITask[‘id’]), а значение — boolean. В случае, если true, значит, задание решено правильно, false в обратном случае
+2) currentSetId — id выбранного Set (ракеты или книги)
+3) selectedLevelId — id выбранного уровня 
+
+После прохождения пользователем заданий, отправляется PATCH запрос на /api/v1/me/, куда передается полностью новое состояние.
