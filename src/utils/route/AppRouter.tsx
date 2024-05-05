@@ -6,7 +6,6 @@ import TestUi from '../../pages/TestUI/TestUi';
 import { Welcome } from '../../pages/Welcome/Welcome';
 import { NotFound } from '../../pages/404/NotFound';
 import { LevelMenu } from '../../pages/LevelMenu/LevelMenu';
-import { CheckAuth } from './components/CheckAuth';
 import { useAuth } from '../contextes/AuthContext/useAuth';
 
 export const AppRouter: React.FC = () => {
@@ -18,7 +17,7 @@ export const AppRouter: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CheckAuth><Welcome /></CheckAuth>} />
+        <Route path="/" element={<Welcome />} />
         <Route path="/auth" element={ <AuthorizationPage />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/test-ui" element={<TestUi/>}/>
