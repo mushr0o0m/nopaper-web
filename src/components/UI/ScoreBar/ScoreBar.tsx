@@ -23,10 +23,10 @@ const ProgressBar: FC<ScoreBarProps> = ({
     }
 
     return (
-        <div {...props} className={[styles.scoreBar, className ?? ''].join(' ')}>
-            {levels.map((level): JSX.Element => {
-                return <Dot dotType={level} className={['dot--score',level == LevelType.Correct ? 'dot--score-correct' : ''].join(' ')}/>;
-            })}
+        <div {...props} className={[styles.bar, className ?? ''].join(' ')}>
+            {levels.map((level, index): JSX.Element =>
+                <Dot key={index} dotType={level} className={['dot--score',level == LevelType.Correct ? 'dot--score-correct' : ''].join(' ')}/>
+            )}
         </div>
     );
 };

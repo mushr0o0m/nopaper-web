@@ -3,7 +3,7 @@
     font-size: 48px;
     color: var(--dark-grey);
     background-color: transparent;
-    border: none;
+    border: 1px dashed var(--dark-grey);
     padding: 0;
 
     cursor: pointer;

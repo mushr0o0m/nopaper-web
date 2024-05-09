@@ -21,10 +21,10 @@ const ProgressBar: FC<ProgressBarProps> = ({
 
 
     return (
-        <div {...props} className={[styles.progressBar, className ?? ''].join(' ')}>
-            {levels.map((level): JSX.Element => {
-                return <Dot dotType={level.status} />;
-            })}
+        <div {...props} className={[styles.bar, className ?? ''].join(' ')}>
+            {levels.map((level): JSX.Element =>
+                < Dot dotType = {level.status} key = {level.level} />
+            )}
         </div>
     );
 };

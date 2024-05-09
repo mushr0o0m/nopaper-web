@@ -1,12 +1,12 @@
 import {FC} from 'react';
 import styles from './ButtonDotted.module.css'
 
-export interface ButtonProps {
+export interface ButtonDottedProps {
     children: string,
     className?: string
 }
 
-const Button: FC<ButtonProps> = ({
+const ButtonDotted: FC<ButtonDottedProps> = ({
                                      children,
                                      className,
                                      ...props}) => {
@@ -18,4 +18,4 @@ const Button: FC<ButtonProps> = ({
     );
 };
 
-export default Button;
+export default ButtonDotted;

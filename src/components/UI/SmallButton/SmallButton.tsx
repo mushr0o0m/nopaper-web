@@ -13,7 +13,7 @@ const Button: FC<SmallButtonProps> = ({
                     isColored,
                     ...props}) => {
 
-    const rootClasses: string[] = [styles.small, className ?? ''];
+    const rootClasses: string[] = [styles.small, styles.btn, className ?? ''];
     if (isColored) {
         rootClasses.push(styles.colored);
     }
