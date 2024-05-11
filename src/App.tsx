@@ -12,6 +12,7 @@ import Sound from "./components/UI/Sound/Sound.tsx";
 import ButtonDotted from "./components/UI/ButtonDotted/ButtonDotted.tsx";
 import Rocket from "./components/UI/Rocket/Rocket.tsx";
 import {RocketType} from "./components/Types/rocket-type.enum.ts";
+import Curtains from "./components/UI/Curtains/Curtains.tsx";
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
         <Sound color={ColorType.Level9} />
         <ButtonDotted>кнопка</ButtonDotted>
         <Rocket type={RocketType.Rocket3} outlined={true} active={true} />
+        <Curtains />
     </>
   )
 }
