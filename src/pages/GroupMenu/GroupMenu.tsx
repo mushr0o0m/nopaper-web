@@ -1,9 +1,9 @@
 import React from "react";
 import { ColorType } from "../../utils/models/colorTypeEnum/color-type.enum";
 import { LevelMenuElement } from "./modules/LevelMenuElement";
-import styles from './LevelMenu.module.css'
+import styles from './GroupMenu.module.css'
 
-export const LevelMenu: React.FC = () => {
+export const GroupMenu: React.FC = () => {
 
   return (
     <div className={styles.container}>
