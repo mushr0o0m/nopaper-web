@@ -1,6 +1,6 @@
 import Dot, {LevelType} from "../Dot/Dot.tsx";
 import {FC} from "react";
-import './ProgressBar.css'
+import styles from './ProgressBar.module.css';
 
 export type LevelInfo = {
     level: number,
@@ -21,10 +21,10 @@ const ProgressBar: FC<ProgressBarProps> = ({
 
 
     return (
-        <div {...props} className={['progress-bar', className ?? ''].join(' ')}>
-            {levels.map((level): JSX.Element => {
-                return <Dot dotType={level.status} />;
-            })}
+        <div {...props} className={[styles.bar, className ?? ''].join(' ')}>
+            {levels.map((level): JSX.Element =>
+                < Dot dotType = {level.status} key = {level.level} />
+            )}
         </div>
     );
 };

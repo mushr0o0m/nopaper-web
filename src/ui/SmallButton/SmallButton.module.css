@@ -1,0 +1,21 @@
+.btn {
+    color: var(--dark-grey);
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.small {
+    font-size: 36px;
+    width: 162px;
+    height: 63px;
+}
+
+.colored {
+    color: var(--light-grey);
+}
+
+.label {
+    top: -100px;
+}
