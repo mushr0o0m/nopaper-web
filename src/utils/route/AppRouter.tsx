@@ -8,6 +8,7 @@ import { NotFound } from '../../pages/404/NotFound';
 import { useAuth } from '../contextes/AuthContext/useAuth';
 import { GroupMenu } from '../../pages/GroupMenu/GroupMenu';
 import { LevelMenu } from '../../pages/LevelMenu/LevelMenu'
+import { SetMenu } from '../../pages/SetMenu/SetMenu';
 
 export const AppRouter: React.FC = () => {
   const {updateUserFromApi} = useAuth();
@@ -24,6 +25,7 @@ export const AppRouter: React.FC = () => {
         <Route path="/test-ui" element={<TestUi/>}/>
         <Route path="/level-menu" element={<LevelMenu/>}/>
         <Route path="/group-menu" element={<GroupMenu/>}/>
+        <Route path="/set-menu/:set-id" element={<SetMenu/>}/>
       </Routes>
     </Router>
   );
