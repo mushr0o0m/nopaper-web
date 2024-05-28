@@ -19,7 +19,7 @@ export const Welcome: React.FC = () => {
         <p className={`${styles.section__text} ${styles.section__text_last}`}>
           В нашем приложении — 300 упражнений разного уровня сложности, составленных <b>экспертами-лингвистами.</b>
         </p>
-        <Button>Начать</Button>
+        <Button linkTo="/level-menu">Начать</Button>
         <img className={`${styles.section__img} ${styles.section__img_glasses}`} src={GlassesSvg} alt="Иллюстрация к тексту" />
       </section>
       <section className={`${styles.section} ${styles.section_rightSide}`}>
@@ -27,7 +27,7 @@ export const Welcome: React.FC = () => {
           <p className={styles.section__text_last}>
             В начале игры <b>будьте рядом с ребЁнком</b> и помогайте, если что-то не будет получаться. <b>внимание и поддержка родителя</b> очень важны для когнитивного развития ребёнка.
           </p>
-          <Button>Начать</Button>
+          <Button linkTo="/level-menu">Начать</Button>
           <img className={`${styles.section__img} ${styles.section__img_hands}`} src={HandsSvg} alt="Иллюстрация к тексту" />
         </div>
       </section>
@@ -39,7 +39,7 @@ export const Welcome: React.FC = () => {
             таймер на 20 минут</b>, он <br />
           напомнит, что пора отдохнуть.
         </p>
-        <Button>Начать</Button>
+        <Button linkTo="/level-menu">Начать</Button>
         <img className={`${styles.section__img} ${styles.section__img_clock}`} src={ClockSvg} alt="Иллюстрация к тексту" />
       </section>
       <section className={`${styles.section} ${styles.section_rightSide}`}>
@@ -47,7 +47,7 @@ export const Welcome: React.FC = () => {
           <p className={styles.section__text_last}>
           Надеемся, что вашему ребЁнку будет <b>не только полезно, но и приятно</b>  учиться читать. 
           </p>
-          <Button>Начать</Button>
+          <Button linkTo="/level-menu">Начать</Button>
           <img className={`${styles.section__img} ${styles.section__img_heart}`} src={HeartSvg} alt="Иллюстрация к тексту" />
         </div>
       </section>

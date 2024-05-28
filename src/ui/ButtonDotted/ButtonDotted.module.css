@@ -1,0 +1,12 @@
+.btn {
+    font-family: Chitalka, sans-serif;
+    font-size: 48px;
+    color: var(--dark-grey);
+    background-color: transparent;
+    border: 1px dashed var(--dark-grey);
+    padding: 0;
+
+    cursor: pointer;
+    width: 194px;
+    height: 78px;
+}

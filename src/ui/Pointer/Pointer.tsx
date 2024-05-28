@@ -1,16 +1,18 @@
 import {ColorType} from "../../utils/models/colorTypeEnum/color-type.enum.ts";
 import {FC} from "react";
-import './Pointer.css'
+import styles from './Pointer.module.css'
+import { Link } from "react-router-dom";
 
 export interface PointerProps {
-    color: ColorType,
+    color?: ColorType,
+    linkTo: string
 }
 
-const Pointer: FC<PointerProps> = ({color, ...props}) => {
+const Pointer: FC<PointerProps> = ({color=ColorType.Default, linkTo, ...props}) => {
     return (
-        <a {...props}  >
-            <img src={color} className='pointer--texture' alt='' style={{width: '30px', height: '55px', objectFit: 'cover'}} />
-        </a>
+        <Link to={linkTo} relative="path" {...props}  >
+            <img src={color} className={styles.pointer} style={{width: '30px', height: '55px', objectFit: 'cover'}} />
+        </Link>
     );
 };
 

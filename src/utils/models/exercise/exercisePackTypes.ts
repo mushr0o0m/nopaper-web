@@ -8,45 +8,45 @@ export interface IExercisePacks {
 }
 
 export interface IPack {
-  id: string
-  name: string
-  status: string
-  version: number
-  publicDataJson: string
-  privateDataJson: string
-  orderingIndex: number
+  id: string,
+  name: string,
+  status: string,
+  version: number,
+  publicDataJson: IData,
+  privateDataJson: IData,
+  orderingIndex: number,
 }
 
 export interface IData {
-  levels: ILevel[];
-  sets: IGroupSet[];
-  groups: ITaskGroup[]
-  tasks: ITask[];
+  levels: ILevel[],
+  sets: IGroupSet[],
+  groups: ITaskGroup[],
+  tasks: ITask[],
 }
 
 export interface ILevel {
-  id: string
-  pack: IPack['id']
-  name: string
-  description: string
-  orderingIndex: number
-  created: string
-  updated: string
+  id: string,
+  pack: IPack['id'],
+  name: string,
+  description: string,
+  orderingIndex: number,
+  created: string,
+  updated: string,
   
 }
 
 export interface IGroupSet {
-  id: string
-  name: string
-  orderingIndex: number
-  level: ILevel['id']
+  id: string,
+  name: string,
+  orderingIndex: number,
+  level: ILevel['id'],
 }
 
 export interface ITaskGroup {
-  id: string
-  name: string
-  set: IGroupSet['id']
-  premium: boolean
+  id: string,
+  name: string,
+  set: IGroupSet['id'],
+  premium: boolean,
 }
 
 

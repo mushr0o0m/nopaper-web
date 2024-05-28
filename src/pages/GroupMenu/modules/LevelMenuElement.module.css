@@ -6,6 +6,8 @@
 }
 
 .levelElement{
+  color: var(--dark-grey);
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 32px;
