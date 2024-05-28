@@ -9,7 +9,7 @@ export const LevelMenu: React.FC = () => {
 
   const navigateToLevel = (levelId: string) => {
     //доступен ли пользователю этот уровень?
-    navigate(`/set-menu/${levelId}`)
+    navigate(`/level-menu/${levelId}/set-menu`)
   }
 
   return (

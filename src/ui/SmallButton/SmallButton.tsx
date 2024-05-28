@@ -4,13 +4,15 @@ import styles from './SmallButton.module.css'
 export interface SmallButtonProps {
     children: string,
     className?: string,
-    isColored: boolean
+    isColored: boolean,
+    onClick?: () => void
 }
 
 const Button: FC<SmallButtonProps> = ({
                     children,
                     className,
                     isColored,
+                    onClick,
                     ...props}) => {
 
     const rootClasses: string[] = [styles.small, styles.btn, className ?? ''];
@@ -19,7 +21,7 @@ const Button: FC<SmallButtonProps> = ({
     }
 
     return (
-        <button {...props} className={rootClasses.join(' ')}>
+        <button onClick={onClick}  {...props} className={rootClasses.join(' ')}>
             <svg width="162" height="63" viewBox="0 0 162 63" fill="none" xmlns="http://www.w3.org/2000/svg"
                  xmlnsXlink="http://www.w3.org/1999/xlink">
                 <path d="M6 3.99999L146 0.869873L160.5 55.5L1.5 61.5L6 3.99999Z" fill={isColored ? '#6AB37A' : ''}/>

@@ -1,4 +1,5 @@
 .rocket {
+    display: inline-block;
     position: relative;
     margin: 20px;
     width: 440px;
