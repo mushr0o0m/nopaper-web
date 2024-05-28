@@ -1,38 +1,33 @@
-import Button from "./components/UI/Button/Button.tsx";
-import SmallButton from "./components/UI/SmallButton/SmallButton.tsx";
-import Pointer from "./components/UI/Pointer/Pointer.tsx";
-import {ColorType} from "./components/Types/color-type.enum.ts";
-import Star from "./components/UI/Star/Star.tsx";
-import Word from "./components/UI/Word/Word.tsx";
-import {LevelType} from "./components/UI/Dot/Dot.tsx";
-import ProgressBar from "./components/UI/ProgressBar/ProgressBar.tsx";
-import ScoreBar from "./components/UI/ScoreBar/ScoreBar.tsx";
-import SoundReplay from "./components/UI/SoundReplay/SoundReplay.tsx";
-import Sound from "./components/UI/Sound/Sound.tsx";
-import ButtonDotted from "./components/UI/ButtonDotted/ButtonDotted.tsx";
-import Rocket from "./components/UI/Rocket/Rocket.tsx";
-import {RocketType} from "./components/Types/rocket-type.enum.ts";
-import Curtains from "./components/UI/Curtains/Curtains.tsx";
+
+import Button from "../../ui/Button/Button"
+import ButtonDotted from "../../ui/ButtonDotted/ButtonDotted"
+import Curtains from "../../ui/Curtains/Curtains"
+import { LevelType } from "../../ui/Dot/Dot"
+import Pointer from "../../ui/Pointer/Pointer"
+import ProgressBar from "../../ui/ProgressBar/ProgressBar"
+import Rocket from "../../ui/Rocket/Rocket"
+import ScoreBar from "../../ui/ScoreBar/ScoreBar"
+import SmallButton from "../../ui/SmallButton/SmallButton"
+import Sound from "../../ui/Sound/Sound"
+import SoundReplay from "../../ui/SoundReplay/SoundReplay"
+import Star from "../../ui/Star/Star"
+import Word from "../../ui/Word/Word"
+import { ColorType } from "../../utils/models"
+import { RocketType } from "../../utils/models/colorTypeEnum/rocket-type.enum"
+
 
 function TestUi() {
 
   return (
     <>
-        <Button>НАЧАТЬ</Button>
+        <Button linkTo="..">НАЧАТЬ</Button>
         <SmallButton isColored={true}>НАЧАТЬ</SmallButton>
         <SmallButton isColored={false}>НАЧАТЬ</SmallButton>
         <br />
-        <Pointer color={ColorType.Default}></Pointer>
+        <Pointer color={ColorType.Default} linkTo={"."}></Pointer>
         <Star color={ColorType.Level1} isOn={true}></Star>
         <Star color={ColorType.Level2} isOn={true}></Star>
         <Star color={ColorType.Level3} isOn={false}></Star>
-        <Star color={ColorType.Level4} isOn={true}></Star>
-        <Star color={ColorType.Level5} isOn={false}></Star>
-        <Star color={ColorType.Level6} isOn={false}></Star>
-        <Star color={ColorType.Level7} isOn={true}></Star>
-        <Star color={ColorType.Level8} isOn={true}></Star>
-        <Star color={ColorType.Level9} isOn={true}></Star>
-        <Star color={ColorType.Level10} isOn={false}></Star>
 
         <Word children={'ДВЕРЬ'}></Word>
         <ProgressBar levels={[
@@ -63,7 +58,9 @@ function TestUi() {
         <SoundReplay color={ColorType.Level9} />
         <Sound color={ColorType.Level9} />
         <ButtonDotted>кнопка</ButtonDotted>
-        <Rocket type={RocketType.Rocket3} outlined={true} active={true} />
+        <Rocket type={RocketType.Rocket3} outlined={false} active={false} linkTo={""} />
+        <Rocket type={RocketType.Rocket3} outlined={true} active={true} linkTo={""} />
+        <Rocket type={RocketType.Rocket3} outlined={true} active={false} linkTo={""} />
         <Curtains />
     </>
   )

@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import styles from './Rocket.module.css'
-import {RocketType} from "../../Types/rocket-type.enum.ts";
+import { RocketType } from '../../../utils/models/colorTypeEnum/rocket-type.enum';
 
 export interface RocketProps {
     type: RocketType,

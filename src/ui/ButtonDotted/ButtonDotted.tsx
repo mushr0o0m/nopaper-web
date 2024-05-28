@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import styles from './ButtonDotted.module.css'
 
 export interface ButtonDottedProps {
@@ -7,9 +7,9 @@ export interface ButtonDottedProps {
 }
 
 const ButtonDotted: FC<ButtonDottedProps> = ({
-                                     children,
-                                     className,
-                                     ...props}) => {
+    children,
+    className,
+    ...props }) => {
 
     return (
         <button {...props} className={[styles.btn, className].join(' ')}>
