@@ -1,0 +1,36 @@
+.tab {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 30px;
+    padding: 20px 30px 20px 20px;
+    width: fit-content;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.faded {
+    opacity: 50%;
+}
+
+.chosen {
+    background-color: var(--transparent-grey);
+    border-radius: 10px;
+}
+
+.text {
+    font-size: 36px;
+    line-height: 52px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.title {
+    max-width: 198px;
+}
+
+.book {
+    padding: 0;
+    margin-bottom: -10px;
+}

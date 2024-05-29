@@ -1,8 +1,7 @@
-
 import Button from "../../ui/Button/Button"
 import ButtonDotted from "../../ui/ButtonDotted/ButtonDotted"
 import Curtains from "../../ui/Curtains/Curtains"
-import { LevelType } from "../../ui/Dot/Dot"
+import {LevelType} from "../../ui/Dot/Dot"
 import Pointer from "../../ui/Pointer/Pointer"
 import ProgressBar from "../../ui/ProgressBar/ProgressBar"
 import Rocket from "../../ui/Rocket/Rocket"
@@ -12,8 +11,11 @@ import Sound from "../../ui/Sound/Sound"
 import SoundReplay from "../../ui/SoundReplay/SoundReplay"
 import Star from "../../ui/Star/Star"
 import Word from "../../ui/Word/Word"
-import { ColorType } from "../../utils/models"
-import { RocketType } from "../../utils/models/colorTypeEnum/rocket-type.enum"
+import {ColorType} from "../../utils/models"
+import {RocketType} from "../../utils/models/colorTypeEnum/rocket-type.enum"
+import Book from "../../ui/Book/Book.tsx";
+import {BookType} from "../../utils/models/colorTypeEnum/book-type.enum.ts";
+import BookTab from "../../ui/BookTab/BookTab.tsx";
 
 
 function TestUi() {
@@ -61,6 +63,8 @@ function TestUi() {
         <Rocket type={RocketType.Rocket3} outlined={false} active={false} linkTo={""} />
         <Rocket type={RocketType.Rocket3} outlined={true} active={true} linkTo={""} />
         <Rocket type={RocketType.Rocket3} outlined={true} active={false} linkTo={""} />
+        <Book type={BookType.BookTravel} active={true} linkTo={''} />
+        <BookTab type={BookType.BookTravel} active={true} chosen={false} linkTo={''} />
         <Curtains />
     </>
   )
