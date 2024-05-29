@@ -1,0 +1,7 @@
+.pointer--texture {
+    mask-image: url('/images/Shapes/pointer-shape.svg');
+    -webkit-mask-image: url('/images/Shapes/pointer-shape.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 30px 55px;
+}

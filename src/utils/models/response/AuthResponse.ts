@@ -4,3 +4,7 @@ export interface AuthResponse {
   refreshExpires: number;
   accessExpires: number;
 }
+
+export interface GuestResponse {
+  userId: string;
+}

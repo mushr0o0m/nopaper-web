@@ -3,6 +3,7 @@
   src: url('./assets/fonts/Chitalka-Medium.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-size: 48px;
 }
 
 @font-face {
@@ -10,4 +11,5 @@
   src: url('./assets/fonts/Chitalka-Bold.otf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  font-size: 48px;
 }

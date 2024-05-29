@@ -1,0 +1,11 @@
+.levelSection{
+  display: flex;
+  padding: 195px 0;
+  gap: 80px;
+  justify-content: space-between
+}
+
+.levelRow{
+  display: flex;
+  gap: 56px;
+}

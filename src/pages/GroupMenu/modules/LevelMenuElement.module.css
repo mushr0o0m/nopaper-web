@@ -1,0 +1,16 @@
+.indexTitle {
+  display: inline-block;
+  font-size: 92px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.levelElement{
+  color: var(--dark-grey);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex-wrap: nowrap;
+  align-items: center;
+}

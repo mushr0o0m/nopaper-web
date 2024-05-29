@@ -1,0 +1,13 @@
+.btn-small {
+    font-size: 36px;
+    width: 162px;
+    height: 63px;
+}
+
+.btn-colored {
+    color: var(--light-grey);
+}
+
+.btn-label {
+    top: -100px;
+}
