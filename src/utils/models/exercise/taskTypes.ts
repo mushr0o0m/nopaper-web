@@ -25,7 +25,7 @@ export interface ITextOption {
 export interface ISimpleTask {
   id: string
   type: 0 | 1 | 2
-  audio: IAudio
+  audio: IAudio[]
   images: IImage[]
   answerOptions: ITextOption[]
   group: ITaskGroup['id']

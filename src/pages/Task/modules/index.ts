@@ -2,7 +2,7 @@ import { ITask } from '../../../utils/models'
 
 
 export * from './TaskTypeFirst/TaskTypeFirst'
-export * from './TaskTypeFifth/TaskTypeFifth'
+export * from './TaskTypeSixth/TaskTypeSixth'
 
 export interface TaskTypesProps{
   task: ITask,
