@@ -1,38 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
 import { TaskTypesProps } from "..";
-import styles from './TaskTypeFirst.module.css'
+import styles from './TaskTypeSixth.module.css'
 import { ITask, ISimpleTask } from "../../../../utils/models";
 import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
 import { StrictModeDroppable } from "../../../../utils/StrictModeDroppable";
 import rightAnswerSound from '../../../../../public/mp3/rightAnswer/1.mp3'
 import wrongAnswerSound from '../../../../../public/mp3/wrongAnswer/1.mp3'
 
-export const TaskTypeFirst: React.FC<TaskTypesProps> = ({ task }) => {
+export const TaskTypeSixth: React.FC<TaskTypesProps> = ({task}) => {
 
-  // function isSimpleTask(task: ITask): task is ISimpleTask {
-  //   return task.type === 0;
-  // }
+  function isSimpleTask(task: ITask): task is ISimpleTask {
+    return task.type === 0 || task.type === 1 || task.type === 2;
+  }
 
-  // if (!isSimpleTask(task))
-  //   return null
+  if (!isSimpleTask(task))
+    return null
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [words, setWords] = React.useState(task.answerOptions.map(word => ({ id: word.id!, content: word.text })));
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [word, setWord] = React.useState<{ id: string, content: string, isRight: boolean }>();
-  const [welcomSound] = React.useState(task.audio[0].file);
-  let audio = new Audio(welcomSound);
 
-  useEffect(() => {
-    audio.play();
-    console.log(welcomSound)
-  })
-
-  useEffect(() => {
-    setWords(task.answerOptions.map(word => ({ id: word.id!, content: word.text })))
-    
-  }, [])
 
   const handleDragEnd = (result: DropResult) => {
     if (!result.destination) return;
