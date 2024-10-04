@@ -1,10 +1,10 @@
 import React from "react";
-import styles from './styles/groupMenu.module.css'
+import { LevelMenuElement } from "./modules/LevelMenuElement";
+import styles from './GroupMenu.module.css'
 import { useNavigate, useParams } from "react-router-dom";
-import LevelMenuElement from "./modules/LevelMenuElement/LevelMenuElement";
-import { useExercise } from "../../contextes/ExerciseContext/hooks/useExercise";
+import { useExercise } from "../../utils/contextes/ExerciseContext/useExercise";
 
-const GroupMenu: React.FC = () => {
+export const GroupMenu: React.FC = () => {
   const { getData } = useExercise();
   const { setId } = useParams();
   const navigate = useNavigate();
@@ -33,5 +33,3 @@ const GroupMenu: React.FC = () => {
       ))}
     </div>)
 }
-
-export default GroupMenu

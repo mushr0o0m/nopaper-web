@@ -12,8 +12,8 @@ import Sound from "../../ui/Sound/Sound"
 import SoundReplay from "../../ui/SoundReplay/SoundReplay"
 import Star from "../../ui/Star/Star"
 import Word from "../../ui/Word/Word"
-import { RocketType } from "../../models/colorTypeEnum/rocket-type.enum"
-import { ColorType } from "../../models/colorTypeEnum/color-type.enum"
+import { ColorType } from "../../utils/models"
+import { RocketType } from "../../utils/models/colorTypeEnum/rocket-type.enum"
 
 
 function TestUi() {

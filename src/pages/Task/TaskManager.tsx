@@ -2,15 +2,15 @@
 
 import React, { useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { useTask } from "../../utils/contextes/TaskContext/useTask";
 import { LevelType } from "../../ui/Dot/Dot";
 import ProgressBar from "../../ui/ProgressBar/ProgressBar";
-import styles from './styles/taskManager.module.css';
+import styles from './TaskManager.module.css'
 import Star from "../../ui/Star/Star";
+import { useExercise } from "../../utils/contextes/ExerciseContext/useExercise";
 import SmallButton from "../../ui/SmallButton/SmallButton";
-import { useExercise } from "../../contextes/ExerciseContext/hooks/useExercise";
-import { useTask } from "../../contextes/TaskContext/hooks/useTask";
 
-const TaskManager: React.FC = () => {
+export const TaskManager: React.FC = () => {
   const { groupId, setId } = useParams();
   const { taskData, setTempGroupId} = useTask();
   const { getData } = useExercise();
@@ -31,6 +31,8 @@ const TaskManager: React.FC = () => {
       navigate(`${taskData[taskIndex].id}`, { replace: true })
     }
   }, [taskData, groupId, taskIndex])
+
+  
 
   const groupIds = getData()?.groups
     .filter(group => group.set === setId)
@@ -78,5 +80,3 @@ const TaskManager: React.FC = () => {
     </div>
   )
 }
-
-export default TaskManager

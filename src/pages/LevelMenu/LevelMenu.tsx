@@ -1,10 +1,10 @@
 ﻿import React from 'react';
-import styles from './styles/levelMenu.module.css'
+import level1 from './svg/level1.svg';
+import level2 from './svg/level2.svg';
+import styles from './LevelMenu.module.css'
 import { useNavigate } from 'react-router-dom';
-import level1 from './../../assets/svg/level1.svg';
-import level2 from './../../assets/svg/level2.svg';
 
-const LevelMenu: React.FC = () => {
+export const LevelMenu: React.FC = () => {
   const navigate = useNavigate();
 
   const navigateToLevel = (levelId: string) => {
@@ -29,5 +29,3 @@ const LevelMenu: React.FC = () => {
     </div>
   );
 };
-
-export default LevelMenu

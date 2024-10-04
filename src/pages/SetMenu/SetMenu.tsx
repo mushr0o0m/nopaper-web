@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useExercise } from "../../contextes/ExerciseContext/hooks/useExercise";
-import FirstLevelMenu from "./components/FirstLevelMenu/FirstLevelMenu";
+import { FirstLevelMenu } from "./components/FirstLevelMenu";
+import { useExercise } from "../../utils/contextes/ExerciseContext/useExercise";
 
 
-const SetMenu: React.FC = () => {
+export const SetMenu: React.FC = () => {
   const { getData } = useExercise();
   const { levelId } = useParams();
   const navigate = useNavigate();
@@ -35,5 +35,3 @@ const SetMenu: React.FC = () => {
     </div>
   )
 }
-
-export default SetMenu

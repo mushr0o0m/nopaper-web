@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './Rocket.module.css'
-import { RocketType } from '../../models/colorTypeEnum/rocket-type.enum';
+import { RocketType } from '../../utils/models/colorTypeEnum/rocket-type.enum';
 import { Link } from 'react-router-dom';
 
 interface RocketProps {
