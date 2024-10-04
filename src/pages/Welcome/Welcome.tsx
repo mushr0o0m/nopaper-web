@@ -1,9 +1,9 @@
 import React from "react";
-import styles from './Welcome.module.css';
+import styles from './style/welcome.module.css';
 import {ClockSvg, GlassesSvg, HandsSvg, HeartSvg } from './svg/index';
 import Button from "../../ui/Button/Button";
 
-export const Welcome: React.FC = () => {
+const Welcome: React.FC = () => {
 
 
   return (
@@ -54,3 +54,5 @@ export const Welcome: React.FC = () => {
     </div>
   )
 }
+
+export default Welcome;

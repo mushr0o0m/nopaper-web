@@ -1,0 +1,24 @@
+:root {
+  --alert-wrong: rgba(233, 91, 81, 100);
+  --gray: #6b6c6f;
+  --alert: #e95b51;
+  --success: #6ab37a;
+  --purple: #a482bb;
+  --green: #90bfbe;
+  --blue: #a5bed7;
+  --light-grey: rgba(237, 237, 238, 100);
+  --mid-grey: rgba(167, 169, 172, 100);
+  --dark-grey: rgba(107, 108, 111, 100);
+  --darkest-grey: rgba(70, 70, 70, 100);
+  --level-1: rgba(151, 97, 83, 100);
+  --level-2: rgba(177, 131, 64, 100);
+  --level-3: rgba(199, 172, 94, 100);
+  --level-4: rgba(150, 146, 77, 100);
+  --level-5: rgba(95, 117, 100, 100);
+  --level-6: rgba(115, 154, 153, 100);
+  --level-7: rgba(135, 161, 187, 100);
+  --level-8: rgba(143, 137, 194, 100);
+  --level-9: rgba(164, 129, 186, 100);
+  --level-10: rgba(199, 126, 152, 100);
+  --beige-bg: rgba(227, 214, 193, 100);
+}

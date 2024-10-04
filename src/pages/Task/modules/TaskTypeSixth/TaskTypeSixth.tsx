@@ -1,13 +1,14 @@
 import React from "react";
-import { TaskTypesProps } from "..";
-import styles from './TaskTypeSixth.module.css'
-import { ITask, ISimpleTask } from "../../../../utils/models";
+import styles from './styles/taskTypeSixth.module.css'
 import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
 import { StrictModeDroppable } from "../../../../utils/StrictModeDroppable";
 import rightAnswerSound from '../../../../../public/mp3/rightAnswer/1.mp3'
 import wrongAnswerSound from '../../../../../public/mp3/wrongAnswer/1.mp3'
+import { ISimpleTask, ITask } from "../../../../contextes/ExerciseContext/exercise.types";
+import { TaskTypesProps } from "../../task.types";
 
-export const TaskTypeSixth: React.FC<TaskTypesProps> = ({task}) => {
+
+const TaskTypeSixth: React.FC<TaskTypesProps> = ({task}) => {
 
   function isSimpleTask(task: ITask): task is ISimpleTask {
     return task.type === 0 || task.type === 1 || task.type === 2;
@@ -116,3 +117,5 @@ export const TaskTypeSixth: React.FC<TaskTypesProps> = ({task}) => {
 
   );
 }
+
+export default TaskTypeSixth
