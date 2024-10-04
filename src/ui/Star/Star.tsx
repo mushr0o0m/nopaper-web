@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './Star.module.css'
-import { ColorType } from '../../utils/models';
+import { ColorType } from '../../models';
 
 export interface StarProps {
   color: number | ColorType,

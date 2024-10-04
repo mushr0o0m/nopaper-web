@@ -7,7 +7,7 @@ interface ConfirmInputGroupProps {
   email: string;
 }
 
-export const ConfirmInputGroup: React.FC<ConfirmInputGroupProps> = ({ otp, setOtp, styles, email }) => {
+const ConfirmInputGroup: React.FC<ConfirmInputGroupProps> = ({ otp, setOtp, styles, email }) => {
   return <>
     <div className={styles.inputForm}>
       <label className={styles.label} htmlFor="otp">Код подтверждения - {email}</label>
@@ -17,3 +17,5 @@ export const ConfirmInputGroup: React.FC<ConfirmInputGroupProps> = ({ otp, setOt
     </div>
   </>
 }
+
+export default ConfirmInputGroup
