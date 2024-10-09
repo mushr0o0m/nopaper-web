@@ -1,17 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useExercise } from '../../contextes/ExerciseContext/hooks/useExercise';
-import { useAuth } from '../../contextes/AuthContext/hooks/useAuth';
-import NotFound from '../../pages/404/NotFound';
-import AuthorizationPage from '../../pages/Authorization/AuthPage';
-import GroupMenu from '../../pages/GroupMenu/GroupMenu';
-import LevelMenu from '../../pages/LevelMenu/LevelMenu';
-import SetMenu from '../../pages/SetMenu/SetMenu';
-import TaskContent from '../../pages/Task/TaskContent';
-import TaskManager from '../../pages/Task/TaskManager';
-import TestUi from '../../pages/TestUI/TestUi';
-import Welcome from '../../pages/Welcome/Welcome';
+import { useExercise } from '../contextes/ExerciseContext/hooks/useExercise';
+import { useAuth } from '../contextes/AuthContext/hooks/useAuth';
+import NotFound from '../pages/404/NotFound';
+import AuthorizationPage from '../pages/Authorization/AuthPage';
+import GroupMenu from '../pages/GroupMenu/GroupMenu';
+import LevelMenu from '../pages/LevelMenu/LevelMenu';
+import SetMenu from '../pages/SetMenu/SetMenu';
+import TaskContent from '../pages/Task/TaskContent';
+import TaskManager from '../pages/Task/TaskManager';
+import TestUi from '../pages/TestUI/TestUi';
+import Welcome from '../pages/Welcome/Welcome';
+import TestDnd from '../pages/TestDnd/TestDnd';
 
 const AppRouter: React.FC = () => {
   const { updateUserFromApi } = useAuth();
@@ -25,6 +26,7 @@ const AppRouter: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/test-ui" element={<TestUi />} />
+        <Route path="/test-dnd" element={<TestDnd />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/" element={<Welcome />} />
         <Route path="/auth" element={<AuthorizationPage />} />
