@@ -1,18 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from './testDnd.module.css'
 import mushroom from './mushroom.png';
 import DraggableWord from "./DraggableWord";
+import solveStartService from "./SolveTaskService";
 
 const TestDnd: React.FC = () => {
-  const [isDragDisabled, setIsDragDisabled] = useState(false);
   const words = ['лоб', 'гриб', 'кот', 'краб']
   const rightWord = 'гриб'
   const droppable = useRef<HTMLDivElement>(null)
+  const taskId = '001'
 
   const handleDragEnd = (word: string): { status: 'success' | 'error' } => {
-    setIsDragDisabled(true)
+    solveStartService.handleSolve(taskId, word === rightWord)
     return word === rightWord ? { status: 'success' } : { status: 'error' }
   }
+
+  useEffect(() => {
+    solveStartService.startSolveTask()
+  }, [taskId])
 
   return (
     <>
@@ -33,7 +38,6 @@ const TestDnd: React.FC = () => {
               key={index}
               text={item}
               droppable={droppable}
-              isDragDisabled={isDragDisabled}
               onDropEnd={handleDragEnd} />
           ))}
         </div>
