@@ -1,4 +1,4 @@
-import { IGroupSet, ILevel, ITask } from "../ExerciseContext/exercise.types"
+import { IGroupSet, ILevel, ITask } from "../../contextes/ExerciseContext/exercise.types"
 
 export interface IApplicationState {
   progress: IUserProgress
@@ -40,4 +40,11 @@ export interface AuthResponse {
 
 export interface GuestResponse {
   userId: string;
+}
+
+export interface IAuth{
+  isLogining: boolean,
+  isAuth: boolean,
+  user?: IUser,
+  email?: string,
 }
