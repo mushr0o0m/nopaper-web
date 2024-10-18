@@ -1,12 +1,12 @@
 
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { TaskTypeFirst, TaskTypeSixth, TaskTypesProps } from "./modules";
-import { useTask } from "../../utils/contextes/TaskContext/useTask";
-import { ITask } from "../../utils/models";
+import { useTask } from "../../contextes/TaskContext/hooks/useTask";
+import { ITask } from "../../contextes/ExerciseContext/exercise.types";
+import TaskTypeFirst from "./modules/TaskTypeFirst/TaskTypeFirst";
 
 
-export const TaskContent: React.FC = () => {
+const TaskContent: React.FC = () => {
   const { taskId } = useParams();
   const { taskData } = useTask();
 
@@ -40,3 +40,5 @@ export const TaskContent: React.FC = () => {
     </div>
   )
 }
+
+export default TaskContent

@@ -6,7 +6,7 @@ interface LoginInputGroupProps {
   setEmail: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const LoginInputGroup: React.FC<LoginInputGroupProps> = ({ email, setEmail, styles }) => {
+const LoginInputGroup: React.FC<LoginInputGroupProps> = ({ email, setEmail, styles }) => {
   return <>
     <div className={styles.inputForm}>
       <label className={styles.label} htmlFor="email">Email</label>
@@ -16,3 +16,5 @@ export const LoginInputGroup: React.FC<LoginInputGroupProps> = ({ email, setEmai
     </div>
   </>
 }
+
+export default LoginInputGroup

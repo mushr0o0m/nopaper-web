@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "../../ui/Button/Button";
-import styles from './NotFound.module.css'
-import { SadManSvg } from "./SadManSvg";
+import styles from './styles/notFound.module.css'
+import SadManSvg from "./modules/SadManSvg";
 
-export const NotFound: React.FC = () => {
+const NotFound: React.FC = () => {
 
   return (
     <main className={styles.main}>
@@ -12,9 +12,11 @@ export const NotFound: React.FC = () => {
         <div className={styles.body__text}>
           <h1 className={styles.title}>Ошибка 404</h1>
           <p className={styles.descr}>К сожалению, страница не найдена</p>
-          <Button>Вернуться домой</Button>
+          <Button linkTo={""}>Вернуться домой</Button>
         </div>
       </div>
     </main>
   )
 }
+
+export default NotFound
