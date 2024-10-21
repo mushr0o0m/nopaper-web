@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import styles from './testDnd.module.css'
 import mushroom from './mushroom.png';
 import DraggableWord from "./DraggableWord";
@@ -10,10 +10,13 @@ const TestDnd: React.FC = () => {
   const droppable = useRef<HTMLDivElement>(null)
   const taskId = '001'
 
-  const handleDragEnd = (word: string): { status: 'success' | 'error' } => {
-    solveStartService.handleSolve(taskId, word === rightWord)
-    return word === rightWord ? { status: 'success' } : { status: 'error' }
-  }
+  const onDragEnd = useCallback((el: Element | null, wordText: string): { status: 'success' | 'error' | 'isBlank' } => {
+    if (droppable.current === el) {
+      solveStartService.handleSolve(taskId, wordText === rightWord)
+      return wordText === rightWord ? { status: 'success' } : { status: 'error' }
+    }
+    return { status: 'isBlank' }
+  }, [])
 
   useEffect(() => {
     solveStartService.startSolveTask()
@@ -37,8 +40,8 @@ const TestDnd: React.FC = () => {
             <DraggableWord
               key={index}
               text={item}
-              droppable={droppable}
-              onDropEnd={handleDragEnd} />
+              onDragEnd={onDragEnd} 
+            />
           ))}
         </div>
       </div>

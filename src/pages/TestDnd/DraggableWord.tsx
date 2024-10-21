@@ -1,18 +1,18 @@
+
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import styles from './testDnd.module.css'
 import solveStartService from "./SolveTaskService";
 
 interface IDraggableWord {
-  onDropEnd: (word: string) => { status: 'success' | 'error' },
-  droppable: React.RefObject<HTMLDivElement>,
   text: string
+  onDragEnd: (el: Element | null, wordText: string) => { status: 'success' | 'error' | 'isBlank' }
 }
 
-const DraggableWord: React.FC<IDraggableWord> = ({ text, droppable, onDropEnd }) => {
+const DraggableWord: React.FC<IDraggableWord> = ({ text, onDragEnd }) => {
   const wordRef = useRef<HTMLDivElement>(null);
 
-  const onMouseDown = (onMouseDownEvent: MouseEvent) => {
+  const OnMouseDown = useCallback((onMouseDownEvent: MouseEvent) => {
     if (!wordRef.current || solveStartService.isDragDisabled) return
     const initMouseCoords = {
       x: onMouseDownEvent.clientX,
@@ -23,6 +23,7 @@ const DraggableWord: React.FC<IDraggableWord> = ({ text, droppable, onDropEnd })
     wordRef.current.style.cursor = 'grabbing'
     wordRef.current.style.backgroundColor = 'white'
     wordRef.current.style.transform = 'scale(1.5)'
+    wordRef.current.style.zIndex = '1000'
 
     const moveAt = (pageX: number, pageY: number) => {
       wordRef.current!.style.transform =
@@ -40,48 +41,51 @@ const DraggableWord: React.FC<IDraggableWord> = ({ text, droppable, onDropEnd })
 
     const onMouseUp = (onMouseUpEvent: MouseEvent) => {
       if (!wordRef.current || solveStartService.isDragDisabled) return
-
       wordRef.current.hidden = true;
       const elemBelow = document.elementFromPoint(onMouseUpEvent.clientX, onMouseUpEvent.clientY);
       wordRef.current.hidden = false;
-
-      if (droppable.current === elemBelow) {
-        const result = onDropEnd(text)
-        if (result.status === 'success')
-          wordRef.current!.style.backgroundColor = 'var(--success)'
+      
+      const result = onDragEnd(elemBelow, text)
+      
+      if (result.status === 'isBlank') {
+        requestAnimationFrame(() => {
+          wordRef.current!.style.transition = 'transform ease-in-out .3s, background-color ease-in-out .3s, cursor ease-in-out .3s'
+          wordRef.current!.style.backgroundColor = 'initial'
+          wordRef.current!.style.transform = `translate(0px, 0px)`
+          wordRef.current!.style.zIndex = '0'
+          wordRef.current!.style.cursor = 'grab'
+        })
+      } else {
+        wordRef.current.style.cursor = 'initial'
         if (result.status === 'error')
           wordRef.current!.style.backgroundColor = 'var(--alert)'
-        wordRef.current.style.cursor = 'initial'
+        else if (result.status === 'success')
+          wordRef.current!.style.backgroundColor = 'var(--success)'
       }
-      if (droppable.current !== elemBelow) {
-        wordRef.current!.style.transition = 'transform ease-in-out .3s, background-color ease-in-out .3s'
-        setTimeout(() => {
-          wordRef.current!.style.backgroundColor = 'initial'
-          wordRef.current!.style.transform = `translate(0px, 0px)`;
-        }, 0)
-        wordRef.current.style.cursor = 'grab'
-      }
+      
       document.removeEventListener('mousemove', onMouseMove);
       wordRef.current!.removeEventListener('mouseup', onMouseUp);
+      
     }
     wordRef.current.addEventListener('mouseup', onMouseUp)
-  }
+  }, [])
+
   useEffect(() => {
     if (!wordRef.current) return
-    wordRef.current.ondragstart = () => false
-    wordRef.current.addEventListener('mousedown', onMouseDown)
-    if (solveStartService.isDragDisabled) { //Как мне уведомить осталиные элементы, что им мунжно поменять курсор
-      wordRef.current!.style.cursor = 'initial'
-    }
+    wordRef.current.addEventListener('mousedown', OnMouseDown)
     return () => {
-      wordRef.current!.removeEventListener('mousedown', onMouseDown);
+      wordRef.current!.removeEventListener('mousedown', OnMouseDown);
     };
   }, [])
 
 
-
   return (
-    <div ref={wordRef} className={styles.taskWord + ' no-select'}>
+    <div
+      ref={wordRef}
+      className={styles.taskWord + ' no-select'}
+      draggable={false}
+      style={{cursor: `${solveStartService.isDragDisabled ? 'initial' : 'grab'}`}}
+    >
       {text}
     </div>
   )

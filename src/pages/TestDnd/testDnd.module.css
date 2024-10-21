@@ -2,6 +2,7 @@
   padding: 300px 140px;
   display: flex;
   justify-content: space-around;
+  cursor: initial;
 }
 
 .mainImg {
@@ -28,15 +29,15 @@
 }
 
 .taskWord {
+  /* cursor: grab; */
+  position: relative;
   transition: background-color ease-in-out .3s;
   background: transparent;
   border: 2px dashed var(--gray);
   border-radius: 5px;
-  cursor: pointer;
   font-size: 32px;
   outline: none;
   padding: 5px 20px;
   position: relative;
   text-align: center;
-  cursor: grab;
 }
