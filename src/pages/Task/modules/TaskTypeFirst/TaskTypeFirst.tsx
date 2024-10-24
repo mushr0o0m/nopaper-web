@@ -25,7 +25,6 @@ const TaskTypeFirst: React.FC<TaskTypesProps> = ({ task }) => {
 
   useEffect(() => {
     audio.play();
-    console.log(welcomSound)
   })
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React from "react";
 import styles from './styles/groupMenu.module.css'
 import { useNavigate, useParams } from "react-router-dom";
 import LevelMenuElement from "./modules/LevelMenuElement/LevelMenuElement";
-import { useExercise } from "../../contextes/ExerciseContext/hooks/useExercise";
+import { useExercise } from "../../recoil/exercise/hooks/exercise.hook";
 
 const GroupMenu: React.FC = () => {
   const { getData } = useExercise();

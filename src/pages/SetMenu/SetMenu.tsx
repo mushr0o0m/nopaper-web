@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useExercise } from "../../contextes/ExerciseContext/hooks/useExercise";
 import FirstLevelMenu from "./components/FirstLevelMenu/FirstLevelMenu";
+import { useExercise } from "../../recoil/exercise/hooks/exercise.hook";
 
 
 const SetMenu: React.FC = () => {
