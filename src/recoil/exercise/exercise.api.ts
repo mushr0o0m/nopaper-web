@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import http from "../../services/http";
 import config from "../../config";
-import { IAvailableExercisePacksResponse, IPack } from "./exercise.types";
+import { IAvailableExercisePacksResponse, IPack } from './exercise.types';
 
 const getExercisePacks = async (exerciseId: string): Promise<AxiosResponse<Pick<IPack, 'publicDataJson'|'privateDataJson'>>> => {
   console.log(exerciseId)

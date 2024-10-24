@@ -1,36 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { LevelType } from "../../ui/Dot/Dot";
 import ProgressBar from "../../ui/ProgressBar/ProgressBar";
 import styles from './styles/taskManager.module.css';
 import Star from "../../ui/Star/Star";
 import SmallButton from "../../ui/SmallButton/SmallButton";
-import { useExercise } from "../../contextes/ExerciseContext/hooks/useExercise";
-import { useTask } from "../../contextes/TaskContext/hooks/useTask";
+import { useExercise } from "../../recoil/exercise/hooks/exercise.hook";
+import { useTask } from "../../recoil/exercise/hooks/task.hook";
+import { ITask } from "../../recoil/exercise/exercise.types";
 
 const TaskManager: React.FC = () => {
   const { groupId, setId } = useParams();
-  const { taskData, setTempGroupId} = useTask();
+  const { getTaskData } = useTask();
   const { getData } = useExercise();
   const navigate = useNavigate();
   const [taskIndex, setTaskIndex] = useState(0);
-
-  React.useEffect(() => {
+  const [taskData, setTaskData] = useState<ITask[]>([])
+  
+  useEffect(() => {
     if (!groupId) {
-      navigate('/404', { replace: true });
-      return;
+      navigate('/404', { replace: true })
+      return
     }
-    setTempGroupId(groupId);
-  }, [groupId])
+    const tasks = getTaskData(groupId)
+    setTaskData(tasks)
+    navigateToTempTaskContent(tasks[0].id)
+  }, [])
 
-
-  React.useEffect(() => {
-    if (taskData.length > 0) {
-      navigate(`${taskData[taskIndex].id}`, { replace: true })
-    }
-  }, [taskData, groupId, taskIndex])
+  const navigateToTempTaskContent = (taskId: string) => {
+    navigate(`${taskId}`, { replace: true })
+  }
 
   const groupIds = getData()?.groups
     .filter(group => group.set === setId)
@@ -47,7 +48,11 @@ const TaskManager: React.FC = () => {
             isColored={false}>назад
           </SmallButton>
           <SmallButton
-            onClick={() => (setTaskIndex((prev) => prev + 1))}
+            onClick={() => {
+              const localIndex = taskIndex + 1
+              setTaskIndex((prev) => prev + 1)
+              navigateToTempTaskContent(taskData[localIndex].id)
+            }}
             isColored={false}>вперед
           </SmallButton>
         </header>

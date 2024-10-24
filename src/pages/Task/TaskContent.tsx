@@ -1,24 +1,23 @@
 
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useTask } from "../../contextes/TaskContext/hooks/useTask";
-import { ITask } from "../../contextes/ExerciseContext/exercise.types";
 import TaskTypeFirst from "./modules/TaskTypeFirst/TaskTypeFirst";
+import { useTask } from "../../recoil/exercise/hooks/task.hook";
+import { ITask } from "../../recoil/exercise/exercise.types";
 
 
 const TaskContent: React.FC = () => {
-  const { taskId } = useParams();
-  const { taskData } = useTask();
+  const { taskId, groupId } = useParams();
+  const { getTaskById } = useTask();
 
   const [tempTask, setTempTask] = useState<ITask | undefined>();
   const LoadingComponent: React.FC = () => <p>Загрузка...</p>;
 
   React.useEffect(() => {
-    if (taskId && taskData) {
-      const foundTask = taskData.find((task) => task.id === taskId);
-      setTempTask(foundTask);
+    if (taskId && groupId) {
+      setTempTask(getTaskById(groupId, taskId))
     }
-  }, [taskId, taskData]);
+  }, [taskId]);
 
   let TaskComponent: React.FC = LoadingComponent;
 

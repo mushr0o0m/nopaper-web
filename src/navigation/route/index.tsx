@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useExercise } from '../../contextes/ExerciseContext/hooks/useExercise';
-import { useAuth } from '../../contextes/AuthContext/hooks/useAuth';
 import NotFound from '../../pages/404/NotFound';
 import AuthorizationPage from '../../pages/Authorization/AuthPage';
 import GroupMenu from '../../pages/GroupMenu/GroupMenu';
@@ -12,6 +10,8 @@ import TaskContent from '../../pages/Task/TaskContent';
 import TaskManager from '../../pages/Task/TaskManager';
 import TestUi from '../../pages/TestUI/TestUi';
 import Welcome from '../../pages/Welcome/Welcome';
+import { useAuth } from '../../recoil/auth/hooks/auth.hook';
+import { useExercise } from '../../recoil/exercise/hooks/exercise.hook';
 
 const AppRouter: React.FC = () => {
   const { updateUserFromApi } = useAuth();
