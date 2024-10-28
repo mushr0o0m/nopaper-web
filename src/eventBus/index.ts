@@ -1,53 +1,37 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type EventKey = string | symbol
-type EventHandler<T = any> = (payload: T) => void
-type EventMap = Record<EventKey, EventHandler>
-type Bus<E> = Record<keyof E, E[keyof E][]>
+import {Bus, EventBus, EventBusEventsMap, EventMap} from "@/eventBus/eventBus.types";
 
-interface EventBus<T extends EventMap> {
-  on<Key extends keyof T>(key: Key, handler: T[Key]): () => void
-  off<Key extends keyof T>(key: Key, handler: T[Key]): void
-  once<Key extends keyof T>(key: Key, handler: T[Key]): void
-  emit<Key extends keyof T>(key: Key, ...payload: Parameters<T[Key]>): void
-}
 
 interface EventBusConfig {
   onError: (...params: any[]) => void
 }
 
-function eventbus<E extends EventMap>(
+function eventBusGenerator<Key extends keyof EventBusEventsMap, E extends EventMap<Key> >(
   config?: EventBusConfig
-): EventBus<E> {
-  const bus: Partial<Bus<E>> = {}
+): EventBus<Key, E> {
+  const bus: Partial<Bus<E, keyof E>> = {}
 
-  const on: EventBus<E>['on'] = (key, handler) => {
-    if (bus[key] === undefined) {
+  const on: EventBus<Key, E>['on'] = (key, handler) => {
+    if (!Array.isArray(bus[key])) {
       bus[key] = []
     }
-    bus[key]?.push(handler)
+
+    bus[key].push(handler)
 
     return () => {
       off(key, handler)
     }
   }
 
-  const off: EventBus<E>['off'] = (key, handler) => {
-    const index = bus[key]?.indexOf(handler) ?? -1
-    bus[key]?.splice(index >>> 0, 1)
-  }
+  const off: EventBus<Key, E>['off'] = (key, handler) => {
+    if (!Array.isArray(bus[key])) return
 
-  const once: EventBus<E>['once'] = (key, handler) => {
-    const handleOnce = (payload: Parameters<typeof handler>) => {
-      handler(payload)
-      // TODO: find out a better way to type `handleOnce`
-      off(key, handleOnce as typeof handler)
+    const index = bus[key].indexOf(handler)
+    if (index !== -1) {
+      bus[key].splice(index, 1)
     }
-
-    on(key, handleOnce as typeof handler)
   }
 
-  const emit: EventBus<E>['emit'] = (key, payload) => {
+  const emit: EventBus<Key, E>['emit'] = (key, payload) => {
     bus[key]?.forEach((fn) => {
       try {
         fn(payload)
@@ -57,7 +41,9 @@ function eventbus<E extends EventMap>(
     })
   }
 
-  return { on, off, once, emit }
+  return { on, off, emit }
 }
 
-export default eventbus
+
+const eventBus =  eventBusGenerator()
+export default eventBus
