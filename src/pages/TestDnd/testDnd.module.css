@@ -29,7 +29,7 @@
 }
 
 .taskWord {
-  /* cursor: grab; */
+  cursor: grab;
   position: relative;
   transition: background-color ease-in-out .3s;
   background: transparent;

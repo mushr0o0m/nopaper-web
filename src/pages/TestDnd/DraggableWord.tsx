@@ -89,7 +89,6 @@ const DraggableWord: React.FC<IDraggableWord> = ({ text, onDragEnd }) => {
       ref={wordRef}
       className={styles.taskWord + ' no-select'}
       draggable={false}
-      style={{cursor: `${solveStartService.isDragDisabled ? 'initial' : 'grab'}`}}
     >
       {text}
     </div>
