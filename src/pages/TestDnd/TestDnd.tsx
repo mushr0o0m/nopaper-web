@@ -3,7 +3,7 @@ import styles from './testDnd.module.css'
 import mushroom from './mushroom.png';
 import DraggableWord from "./DraggableWord";
 import solveStartService from "./SolveTaskService";
-import taskEventChannel from "../../eventChannels/task";
+import eventBus from "@/eventBus";
 
 const TestDnd: React.FC = () => {
   const words = ['лоб', 'гриб', 'кот', 'краб']
@@ -11,10 +11,10 @@ const TestDnd: React.FC = () => {
   const droppable = useRef<HTMLDivElement>(null)
   const taskId = '001'
 
-  const onDragEnd = useCallback((el: Element | null, wordText: string): { status: 'success' | 'error' | 'isBlank' } => {
-    if (droppable.current === el) {
+  const onDragEnd = useCallback((droppedAt: Element | null, wordText: string): { status: 'success' | 'error' | 'isBlank' } => {
+    if (droppable.current === droppedAt) {
       solveStartService.handleSolve(taskId, wordText === rightWord)
-      taskEventChannel.emit('onTaskFinish')
+      eventBus.emit('onTaskFinish', {})
       return wordText === rightWord ? { status: 'success' } : { status: 'error' }
     }
     return { status: 'isBlank' }
