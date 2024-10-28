@@ -3,6 +3,7 @@ import styles from './testDnd.module.css'
 import mushroom from './mushroom.png';
 import DraggableWord from "./DraggableWord";
 import solveStartService from "./SolveTaskService";
+import taskEventChannel from "../../eventChannels/task";
 
 const TestDnd: React.FC = () => {
   const words = ['лоб', 'гриб', 'кот', 'краб']
@@ -13,6 +14,7 @@ const TestDnd: React.FC = () => {
   const onDragEnd = useCallback((el: Element | null, wordText: string): { status: 'success' | 'error' | 'isBlank' } => {
     if (droppable.current === el) {
       solveStartService.handleSolve(taskId, wordText === rightWord)
+      taskEventChannel.emit('onTaskFinish')
       return wordText === rightWord ? { status: 'success' } : { status: 'error' }
     }
     return { status: 'isBlank' }

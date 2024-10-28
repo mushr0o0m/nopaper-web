@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import styles from './testDnd.module.css'
 import solveStartService from "./SolveTaskService";
+import taskEventChannel from "../../eventChannels/task";
 
 interface IDraggableWord {
   text: string
@@ -72,9 +73,13 @@ const DraggableWord: React.FC<IDraggableWord> = ({ text, onDragEnd }) => {
 
   useEffect(() => {
     if (!wordRef.current) return
+    const unsubOnTaskFinish = taskEventChannel.on('onTaskFinish', () => {
+      wordRef.current!.style.cursor = 'initial'
+    })
     wordRef.current.addEventListener('mousedown', OnMouseDown)
     return () => {
-      wordRef.current!.removeEventListener('mousedown', OnMouseDown);
+      wordRef.current!.removeEventListener('mousedown', OnMouseDown)
+      unsubOnTaskFinish()
     };
   }, [])
 
