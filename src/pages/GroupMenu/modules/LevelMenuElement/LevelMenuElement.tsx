@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 import style from './styles/levelMenuElement.module.css'
-import { Link } from "react-router-dom";
-import Star from "../../../../ui/Star/Star";
-import ScoreBar from "../../../../ui/ScoreBar/ScoreBar";
+import { Link } from 'react-router-dom'
+import Star from '../../../../shared/Star/Star'
+import ScoreBar from '../../../../shared/ScoreBar/ScoreBar'
 
 interface LevelMenuElementProps {
-  colorIndex: number;
-  linkTo: string;
-  isOn: boolean;
-  index: number;
-  recentLevel?: number;
-  levelAmount?: number;
-  isScoreBarIsOn?: boolean;
+  colorIndex: number
+  linkTo: string
+  isOn: boolean
+  index: number
+  recentLevel?: number
+  levelAmount?: number
+  isScoreBarIsOn?: boolean
 }
 
 const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
@@ -21,12 +21,14 @@ const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
   index,
   recentLevel = 0,
   levelAmount = 10,
-  isScoreBarIsOn = false }) => {
-
+  isScoreBarIsOn = false,
+}) => {
   return (
-    <Link to={linkTo} className={style.levelElement}
+    <Link
+      to={linkTo}
+      className={style.levelElement}
       style={{
-        pointerEvents: isOn ? 'auto' : 'none'
+        pointerEvents: isOn ? 'auto' : 'none',
       }}
     >
       <h3 className={style.indexTitle}>{index}</h3>

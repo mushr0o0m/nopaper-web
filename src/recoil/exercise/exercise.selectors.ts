@@ -1,21 +1,21 @@
-import { selector } from "recoil"
-import { authState } from "../auth/auth.atom"
-import { exerciseState } from "./exercise.atom"
+import { selector } from 'recoil'
+import { exerciseState } from './exercise.atom'
+import authAtom from '../../pages/Authorization/auth.atom.ts'
 
 const getExerciseDataByUserStatus = selector({
   key: 'getExerciseDataByUserStatus',
   get: ({ get }) => {
-    const {user} = get(authState)
-    const {exercisePack} = get(exerciseState)
+    const { user } = get(authAtom)
+    const { exercisePack } = get(exerciseState)
+
     if (user?.isSuperuser || (user?.subscriptions && user?.subscriptions.length > 0)) {
       return exercisePack?.privateDataJson
     }
+
     return exercisePack?.publicDataJson
   },
 })
 
-
-
-const exerciseSelectors = {getExerciseDataByUserStatus}
+const exerciseSelectors = { getExerciseDataByUserStatus }
 
 export default exerciseSelectors
