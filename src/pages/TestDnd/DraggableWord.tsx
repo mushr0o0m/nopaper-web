@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import styles from './testDnd.module.css'
 import solveStartService from "./SolveTaskService";
-import eventBus from "@/eventBus";
+import eventBus from "../../eventBus/index";
 
 interface IDraggableWord {
   text: string
