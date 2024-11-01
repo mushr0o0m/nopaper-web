@@ -1,7 +1,8 @@
 import React from "react";
 import styles from './style/welcome.module.css';
-import {ClockSvg, GlassesSvg, HandsSvg, HeartSvg } from './svg/index';
+import { ClockSvg, GlassesSvg, HandsSvg, HeartSvg } from './svg/index';
 import Button from "../../ui/Button/Button";
+import { Link } from "react-router-dom";
 
 const Welcome: React.FC = () => {
 
@@ -45,10 +46,35 @@ const Welcome: React.FC = () => {
       <section className={`${styles.section} ${styles.section_rightSide}`}>
         <div className={styles.section__text}>
           <p className={styles.section__text_last}>
-          Надеемся, что вашему ребЁнку будет <b>не только полезно, но и приятно</b>  учиться читать. 
+            Надеемся, что вашему ребЁнку будет <b>не только полезно, но и приятно</b>  учиться читать.
           </p>
           <Button linkTo="/level-menu">Начать</Button>
           <img className={`${styles.section__img} ${styles.section__img_heart}`} src={HeartSvg} alt="Иллюстрация к тексту" />
+        </div>
+      </section>
+      <section className={`${styles.section} ${styles.section_centre}`}>
+        <div className={styles.section__text}>
+          <p className={styles.section__text_last + ' ' + styles.text_alignCenter}>
+            ПОЛНЫЙ ПАКЕТ ЗАДАНИЙ ДОСТУПЕН
+            ПО ПОДПИСКЕ. ПЕРЕД ПОКУПКОЙ ВЫ МОЖЕТЕ
+            ПОПРОБОВАТЬ ПРИЛОЖЕНИЕ БЕСПЛАТНО.
+          </p>
+          <div className={styles.section__buttons}>
+            <Link to="/level-menu" className={styles.btn}>Купить подписку</Link>
+            <Link to="/level-menu" className={styles.btn}>Попробовать бесплатно</Link>
+          </div>
+        </div>
+      </section>
+      <section className={`${styles.section} ${styles.section_centre}`}>
+        <div className={styles.section__text}>
+          <p className={styles.section__text_last + ' ' + styles.text_alignCenter}>
+            <b>ЧТОБЫ ВОСПОЛЬЗОВАТЬСЯ ВСЕМИ
+              ВОЗМОЖНОСТЯМИ ПРИЛОЖЕНИЯ, МЫ ПРЕДЛАГАЕМ ВАМ АВТОРИЗОВАТЬСЯ.</b>
+          </p>
+          <div className={styles.section__buttons}>
+            <Link to="/auth" className={styles.btn}>Авторизоваться</Link>
+            <Link to="/level-menu" className={styles.btn}>Начать без авторизации</Link>
+          </div>
         </div>
       </section>
     </div>
