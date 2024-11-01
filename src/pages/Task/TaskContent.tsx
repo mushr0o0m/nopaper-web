@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import TaskTypeFirst from './modules/TaskTypeFirst/TaskTypeFirst'
-import { ITask } from '../../recoil/exercise/exercise.types'
-import useTask from '../../recoil/exercise/hooks/useTask.ts'
+import { ITask } from './exercise.types'
+import useTask from './hooks/useTask'
 
 const TaskContent: React.FC = () => {
   const { taskId, groupId } = useParams()

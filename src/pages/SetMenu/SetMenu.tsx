@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import FirstLevelMenu from './components/FirstLevelMenu/FirstLevelMenu'
 import { useRecoilValue } from 'recoil'
-import exerciseSelectors from '../../recoil/exercise/exercise.selectors.ts'
+import exerciseSelectors from '../Task/exercise.selectors'
 
 const SetMenu: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
@@ -16,7 +16,7 @@ const SetMenu: React.FC = () => {
     return null
   }
 
-  const setIds = data.sets.filter((set) => set.level === levelId).map((set) => set.id) || []
+  const setIds = data?.sets.filter((set) => set.level === levelId).map((set) => set.id) || []
 
   const MenuComponent = setMenuById.get(levelId)
 

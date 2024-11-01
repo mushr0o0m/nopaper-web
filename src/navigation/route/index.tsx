@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NotFound from '../../pages/404/NotFound'
-import AuthorizationPage from '../../pages/Authorization/AuthPage'
 import GroupMenu from '../../pages/GroupMenu/GroupMenu'
 import LevelMenu from '../../pages/LevelMenu/LevelMenu'
 import SetMenu from '../../pages/SetMenu/SetMenu'
@@ -11,7 +10,8 @@ import TaskManager from '../../pages/Task/TaskManager'
 import TestUi from '../../pages/TestUI/TestUi'
 import Welcome from '../../pages/Welcome/Welcome'
 import useAuthMethods from '../../pages/Authorization/hooks/useAuthMethods.ts'
-import useExercisesLoad from '../../recoil/exercise/hooks/exercise.hook.ts'
+import AuthorizationPage from '../../pages/Authorization/index.tsx'
+import useExercisesLoad from '../../pages/Task/hooks/useExercisesLoad.ts'
 
 const AppRouter: React.FC = () => {
   const { loadUser } = useAuthMethods()

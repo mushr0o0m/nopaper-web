@@ -7,10 +7,10 @@ import ProgressBar from '../../shared/ProgressBar/ProgressBar'
 import styles from './styles/taskManager.module.css'
 import Star from '../../shared/Star/Star'
 import SmallButton from '../../shared/SmallButton/SmallButton'
-import { ITask } from '../../recoil/exercise/exercise.types'
 import { useRecoilValue } from 'recoil'
-import exerciseSelectors from '../../recoil/exercise/exercise.selectors.ts'
-import useGroupTasks from '../../recoil/exercise/hooks/useGroupTasks.ts'
+import exerciseSelectors from './exercise.selectors'
+import { ITask } from './exercise.types'
+import useGroupTasks from './hooks/useGroupTasks'
 
 const TaskManager: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
@@ -36,7 +36,7 @@ const TaskManager: React.FC = () => {
     navigate(`${taskId}`, { replace: true })
   }
 
-  const groupIds = data.groups.filter((group) => group.set === setId).map((group) => group.id) || []
+  const groupIds = data?.groups.filter((group) => group.set === setId).map((group) => group.id) || []
 
   const tempIndexGroup = groupId ? groupIds.indexOf(groupId) + 1 : -1
 

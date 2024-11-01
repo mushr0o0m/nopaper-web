@@ -19,7 +19,6 @@ http.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config
-    console.log('asdasdasd', error)
     if (error.response.status === 401 && error.config && !originalRequest.isRetry) {
       originalRequest.isRetry = true
       try {

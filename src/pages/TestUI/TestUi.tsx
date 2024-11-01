@@ -1,4 +1,4 @@
-import Button from '../../shared/Button/Button'
+
 import ButtonDotted from '../../shared/ButtonDotted/ButtonDotted'
 import Curtains from '../../shared/Curtains/Curtains'
 import { LevelType } from '../../shared/Dot/Dot'
@@ -13,6 +13,7 @@ import Star from '../../shared/Star/Star'
 import Word from '../../shared/Word/Word'
 import { RocketType } from '../../models/colorTypeEnum/rocket-type.enum'
 import { ColorType } from '../../models/colorTypeEnum/color-type.enum'
+import Button from '../../shared/Button'
 
 function TestUi() {
   return (

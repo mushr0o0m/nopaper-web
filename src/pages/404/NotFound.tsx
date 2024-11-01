@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from '../../shared/Button/Button'
 import styles from './styles/notFound.module.css'
 import SadManSvg from './modules/SadManSvg'
+import Button from '../../shared/Button'
 
 const NotFound: React.FC = () => {
   return (

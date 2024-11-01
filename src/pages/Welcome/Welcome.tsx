@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './style/welcome.module.css'
 import { ClockSvg, GlassesSvg, HandsSvg, HeartSvg } from './svg/index'
-import Button from '../../shared/Button/Button'
+import Button from '../../shared/Button'
 
 const Welcome: React.FC = () => {
   return (

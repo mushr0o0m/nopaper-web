@@ -3,7 +3,7 @@ import styles from './styles/groupMenu.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import LevelMenuElement from './modules/LevelMenuElement/LevelMenuElement'
 import { useRecoilValue } from 'recoil'
-import exerciseSelectors from '../../recoil/exercise/exercise.selectors.ts'
+import exerciseSelectors from '../Task/exercise.selectors'
 
 const GroupMenu: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
