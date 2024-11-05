@@ -1,8 +1,8 @@
 import React from "react";
 import styles from './style/welcome.module.css';
 import { ClockSvg, GlassesSvg, HandsSvg, HeartSvg } from './svg/index';
-import Button from "../../ui/Button/Button";
 import { Link } from "react-router-dom";
+import Button from "@/shared/Button";
 
 const Welcome: React.FC = () => {
 
