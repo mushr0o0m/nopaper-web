@@ -1,5 +1,5 @@
 import { atom } from 'recoil'
-import { IAuth } from './auth.types.ts'
+import { IAuth } from '@/pages/Authorization/auth.types'
 
 const authAtom = atom<IAuth>({
   key: 'authState',

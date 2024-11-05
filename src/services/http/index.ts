@@ -9,7 +9,8 @@ const http = axios.create({
 
 http.interceptors.request.use((config) => {
   if (localStorage.getItem('access')) config.headers.Authorization = `Bearer ${localStorage.getItem('access')}`
-  else config.headers['X-Account-Id'] = `${localStorage.getItem('userId')}`
+  else if (localStorage.getItem('userId')) config.headers['X-Account-Id'] = `${localStorage.getItem('userId')}`
+
   return config
 })
 
