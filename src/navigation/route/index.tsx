@@ -14,11 +14,11 @@ import AuthorizationPage from '../../pages/Authorization/index.tsx'
 import useExercisesLoad from '../../pages/Task/hooks/useExercisesLoad.ts'
 
 const AppRouter: React.FC = () => {
-  const { loadUser } = useAuthMethods()
+  const { loadUser, guestInit } = useAuthMethods()
   const { loadExercises } = useExercisesLoad()
 
   useEffect(() => {
-    Promise.all([loadUser(), loadExercises()]).catch(() => {})
+    Promise.all([guestInit(), loadUser(), loadExercises()]).catch(() => {})
   }, [])
 
   return (

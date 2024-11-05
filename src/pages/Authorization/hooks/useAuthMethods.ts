@@ -17,7 +17,6 @@ const useAuthMethods = () => {
     setAuthData((prev) => ({ ...prev, isAuth: true }))
     localStorage.setItem('access', response.body.access)
     localStorage.setItem('refresh', response.body.refresh)
-    // await updateUserFromApi()
   }
 
   const refresh = async (): Promise<void> => {
@@ -28,7 +27,8 @@ const useAuthMethods = () => {
     localStorage.setItem('access', response.body.access)
   }
 
-  const guest = async (): Promise<void> => {
+  const guestInit = async (): Promise<void> => {
+    if(localStorage.getItem('userId')) return
     const response = await authApi.guestUser()
     if(response.status === 'error') return
     localStorage.setItem('userId', response.body.userId)
@@ -45,7 +45,7 @@ const useAuthMethods = () => {
     signIn,
     confirm,
     refresh,
-    guest,
+    guestInit,
     loadUser,
   }
 }
