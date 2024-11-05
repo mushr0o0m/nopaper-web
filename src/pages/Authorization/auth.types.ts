@@ -1,4 +1,4 @@
-import { IGroupSet, ILevel, ITask } from '../../recoil/exercise/exercise.types.ts'
+import { IGroupSet, ILevel, ITask } from '../Task/exercise.types.ts'
 
 export interface IApplicationState {
   progress: IUserProgress
@@ -11,9 +11,7 @@ export interface IApplicationState {
   secondIntroVideoPlayed: boolean
 }
 
-interface IUserProgress {
-  [id: ITask['id']]: boolean
-}
+export type IUserProgress = Record<ITask['id'], boolean>
 
 export interface IUser {
   id: string
