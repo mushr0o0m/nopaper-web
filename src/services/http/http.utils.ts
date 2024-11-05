@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios'
-import { IHTTPErrorResponse, IHTTPSuccessResponse } from './http.types.ts'
+import { IHTTPErrorResponse, IHTTPSuccessResponse } from '@/services/http/http.types'
 
 export const handleHttpResponse = <T extends any>(
   response: Pick<AxiosResponse<T>, 'data'>

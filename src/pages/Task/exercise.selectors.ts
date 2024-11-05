@@ -1,6 +1,6 @@
 import { selector } from 'recoil'
 import { exerciseState } from './exercise.atom'
-import authAtom from '../../pages/Authorization/auth.atom.ts'
+import authAtom from '@/pages/Authorization/auth.atom'
 
 const getExerciseDataByUserStatus = selector({
   key: 'getExerciseDataByUserStatus',

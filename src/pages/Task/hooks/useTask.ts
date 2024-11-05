@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import exerciseSelectors from '../exercise.selectors'
-import { ITask } from '../exercise.types.ts'
 import { useMemo } from 'react'
+import { ITask } from '@/pages/Task/exercise.types'
 
 const useTask = (id: ITask['id']) => {
   const exerciseData = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)

@@ -5,9 +5,9 @@ import LoginInputGroup from './components/LoginInputGroup'
 import ConfirmInputGroup from './components/ConfirmInputGroup'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import authAtom from './auth.atom.ts'
-import useAuthMethods from './hooks/useAuthMethods.ts'
-import useHttpLoader from '../../shared/hooks/useHttpLoader.ts'
+import authAtom from '@/pages/Authorization/auth.atom'
+import useHttpLoader from '@/shared/hooks/useHttpLoader'
+import useAuthMethods from '@/pages/Authorization/hooks/useAuthMethods'
 
 const AuthorizationPage: React.FC = () => {
   const { wait, loading } = useHttpLoader()

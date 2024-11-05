@@ -1,7 +1,7 @@
-import { ITaskGroup } from '../exercise.types.ts'
 import { useRecoilValue } from 'recoil'
-import exerciseSelectors from '../exercise.selectors.ts'
 import { useMemo } from 'react'
+import { ITaskGroup } from '@/pages/Task/exercise.types'
+import exerciseSelectors from '@/pages/Task/exercise.selectors'
 
 const useGroupTasks = (groupId: ITaskGroup['id']) => {
   const exerciseData = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)

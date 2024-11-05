@@ -1,13 +1,13 @@
-import { ITask } from "../../contextes/ExerciseContext/exercise.types";
+import { ITask } from '@/pages/Task/exercise.types'
 
-class SolveTaskService{
+class SolveTaskService {
   public isDragDisabled: boolean = false
 
-  public handleSolve(task: ITask['id'], rigthAnswered: boolean){
+  public handleSolve(task: ITask['id'], rigthAnswered: boolean) {
     this.isDragDisabled = true
   }
 
-  public startSolveTask(){
+  public startSolveTask() {
     this.isDragDisabled = false
   }
 }

@@ -1,8 +1,8 @@
 import http from '../../services/http'
 import config from '../../config'
 import { IAvailableExercisePacksResponse, IPack } from './exercise.types'
-import { handleHttpError, handleHttpResponse } from '../../services/http/http.utils.ts'
-import { HTTPResponse } from '../../services/http/http.types.ts'
+import { handleHttpError, handleHttpResponse } from '@/services/http/http.utils'
+import { HTTPResponse } from '@/services/http/http.types'
 
 const getExercisePackData = async (
   packId: IPack['id']

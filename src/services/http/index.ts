@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AuthResponse } from '../../pages/Authorization/auth.types.ts'
+import { AuthResponse } from '@/pages/Authorization/auth.types'
 
 export const API_URL = 'https://dev-store.nebumaga.com'
 
