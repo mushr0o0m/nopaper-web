@@ -1,7 +1,11 @@
+a{
+  display: block;
+}
+
 .section {
   display: flex;
   flex-direction: column;
-  padding: 240px 0;
+  padding: 120px 0;
   position: relative;
 }
 
@@ -13,8 +17,16 @@
   margin-bottom: 42px;
 }
 
+.text_alignCenter {
+  text-align: center;
+}
+
 .section_rightSide {
   align-items: flex-end;
+}
+
+.section_centre {
+  align-items: center;
 }
 
 .section__text_3 {
@@ -32,7 +44,7 @@
 }
 
 .section__img_hands {
-  top: 0;
+  top: -98px;
   left: 0;
 }
 
@@ -43,6 +55,27 @@
 
 .section__img_heart {
   width: 420px;
-  top: 144px;
+  top: 60px;
   left: 0px;
+}
+
+.section__buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.btn {
+  text-decoration: none;
+  font-family: Chitalka, sans-serif;
+  font-size: 48px;
+  color: var(--dark-grey);
+  background-color: transparent;
+  border: 1px dashed var(--dark-grey);
+  padding: 15px;
+
+  cursor: pointer;
+  min-width: 194px;
+  height: 78px;
 }

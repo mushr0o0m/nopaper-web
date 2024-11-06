@@ -1,13 +1,13 @@
-import React from "react";
-import Rocket from "../../../../ui/Rocket/Rocket";
+import React from 'react'
+import Rocket from '../../../../shared/Rocket/Rocket'
 
 interface FirstLevelMenuProps {
-  setIds: string[];
-  tempSetId: string;
+  setIds: string[]
+  tempSetId: string
 }
 
 const FirstLevelMenu: React.FC<FirstLevelMenuProps> = ({ setIds, tempSetId }) => {
-  const tempSetIndex = setIds.findIndex(e => e === tempSetId);
+  const tempSetIndex = setIds.findIndex((e) => e === tempSetId)
 
   return (
     <div className="rockets">

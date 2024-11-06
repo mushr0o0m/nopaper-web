@@ -1,10 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useExercise } from '../contextes/ExerciseContext/hooks/useExercise';
-import { useAuth } from '../contextes/AuthContext/hooks/useAuth';
 import NotFound from '../pages/404/NotFound';
-import AuthorizationPage from '../pages/Authorization/AuthPage';
 import GroupMenu from '../pages/GroupMenu/GroupMenu';
 import LevelMenu from '../pages/LevelMenu/LevelMenu';
 import SetMenu from '../pages/SetMenu/SetMenu';
@@ -13,18 +9,23 @@ import TaskManager from '../pages/Task/TaskManager';
 import TestUi from '../pages/TestUI/TestUi';
 import Welcome from '../pages/Welcome/Welcome';
 import TestDnd from '../pages/TestDnd/TestDnd';
+import useAuthMethods from "@/pages/Authorization/hooks/useAuthMethods";
+import useExercisesLoad from "@/pages/Task/hooks/useExercisesLoad";
+import {useEffect} from "react";
+import AuthorizationPage from "@/pages/Authorization";
 
 const AppRouter: React.FC = () => {
-  const { updateUserFromApi } = useAuth();
-  const { checkAndFetchIfNeeded } = useExercise();
+  const { loadUser, guestInit } = useAuthMethods()
+  const { loadExercises } = useExercisesLoad()
+
   useEffect(() => {
-    updateUserFromApi();
-    checkAndFetchIfNeeded();
-  }, []);
+    Promise.all([guestInit(), loadUser(), loadExercises()]).catch(() => {})
+  }, [])
 
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Welcome />} index={true} />
         <Route path="/test-ui" element={<TestUi />} />
         <Route path="/test-dnd" element={<TestDnd />} />
         <Route path="/404" element={<NotFound />} />
@@ -38,6 +39,6 @@ const AppRouter: React.FC = () => {
         </Route>
       </Routes>
     </Router>
-  );
-};
-export default AppRouter;
+  )
+}
+export default AppRouter
