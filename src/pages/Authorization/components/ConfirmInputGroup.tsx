@@ -10,10 +10,16 @@ interface ConfirmInputGroupProps {
 const ConfirmInputGroup: React.FC<ConfirmInputGroupProps> = ({ otp, setOtp, styles, email }) => {
   return <>
     <div className={styles.inputForm}>
-      <label className={styles.label} htmlFor="otp">Код подтверждения - {email}</label>
-      <input className={styles.input} type="otp" name="otp" id="otp"
+      <p className={styles.confirmLabel}>На email<br/>
+        <span className={styles.email}> {email} </span> <br/>
+        МЫ ОТПРАВИЛИ цифровой код. <br/>
+        Введите его здесь:</p>
+      <input className={styles.confirmInput} type="otp" name="otp" id="otp"
         value={otp} onChange={e => setOtp(e.target.value)}
         placeholder={"000000"} />
+      <p className={styles.waitLine}>
+        повторная отправка возможна через {} сек.
+      </p>
     </div>
   </>
 }

@@ -9,10 +9,11 @@ interface LoginInputGroupProps {
 const LoginInputGroup: React.FC<LoginInputGroupProps> = ({ email, setEmail, styles }) => {
   return <>
     <div className={styles.inputForm}>
-      <label className={styles.label} htmlFor="email">Email</label>
+      <h2 className={styles.loginCard__header}>Вход в личный кабинет</h2>
+      <label className={styles.label} htmlFor="email">Укажите ваш email:</label>
       <input className={styles.input} type="email" name="email" id="email"
-        value={email} onChange={e => setEmail(e.target.value)}
-        placeholder={"example@scalartis.com"}/>
+             value={email} onChange={e => setEmail(e.target.value)}
+             placeholder={"example@scalartis.com"}/>
     </div>
   </>
 }
