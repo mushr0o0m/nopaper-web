@@ -1,4 +1,5 @@
-import { IGroupSet, ILevel, ITask } from '../Task/exercise.types.ts'
+import { IGroupSet, ILevel, ITask } from "../Task/exercise.types"
+
 
 export interface IApplicationState {
   progress: IUserProgress
@@ -27,6 +28,13 @@ export interface IUser {
   isGuest: boolean
 }
 
+export interface IAuth {
+  isAuth: boolean
+  access: string
+  accessExpires?: number
+  user?: IUser
+}
+
 //response
 
 export interface AuthResponse {
@@ -40,9 +48,3 @@ export interface GuestResponse {
   userId: string
 }
 
-export interface IAuth {
-  isLogining: boolean
-  isAuth: boolean
-  user?: IUser
-  email?: string
-}

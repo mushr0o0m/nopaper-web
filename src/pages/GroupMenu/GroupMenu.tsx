@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles/groupMenu.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import LevelMenuElement from './modules/LevelMenuElement/LevelMenuElement'
@@ -9,13 +9,18 @@ const GroupMenu: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
   const { setId } = useParams()
   const navigate = useNavigate()
+  const [groupIds, setGroupIds] = useState<string[]>([])
+  
+  useEffect(() => {
+    if(data)
+      setGroupIds( data.groups.filter((group) => group.set === setId).map((group) => group.id) || [])
+
+  }, [data])
 
   if (!setId) {
     navigate('/404')
     return null
   }
-
-  const groupIds = data.groups.filter((group) => group.set === setId).map((group) => group.id) || []
 
   return (
     <div className="container">

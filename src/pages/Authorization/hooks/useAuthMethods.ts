@@ -1,29 +1,33 @@
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import authAtom from '@/pages/Authorization/auth.atom'
 import authApi from '@/pages/Authorization/auth.api'
+import { HTTPResponse } from '@/services/http/http.types'
+import { AuthResponse, IUser } from '../auth.types'
 
 const useAuthMethods = () => {
-  const [authData, setAuthData] = useRecoilState(authAtom)
+  const setAuthData = useSetRecoilState(authAtom)
 
-  const signIn = async (email: string): Promise<void> => {
-    await authApi.loginUser(email)
-    setAuthData((prev) => ({ ...prev, email, isLogining: true }))
+  const signIn = async (email: string): Promise<HTTPResponse<Pick<IUser, 'id'>>> => {
+    const resp = await authApi.loginUser(email)
+    return resp
   }
 
-  const confirm = async (otp: string): Promise<void> => {
-    if (!authData.email) throw new Error('Email is missing!')
-    const response = await authApi.confirmUser(authData.email, otp)
-    if (response.status === 'error') return
-    setAuthData((prev) => ({ ...prev, isAuth: true }))
-    localStorage.setItem('access', response.body.access)
+  const confirm = async (otp: string, email: string): Promise<HTTPResponse<AuthResponse>> => {
+    const response = await authApi.confirmUser(email, otp)
+    if (response.status === 'error'){
+      return response
+    }
+    setAuthData((prev) => ({ ...prev, isAuth: true, access: response.body.access}))
     localStorage.setItem('refresh', response.body.refresh)
+    localStorage.setItem('access', response.body.access)
+    return response
   }
 
   const refresh = async (): Promise<void> => {
     const response = await authApi.refreshUser()
     if (response.status === 'error') return
     await loadUser()
-    setAuthData((prev) => ({ ...prev, isAuth: true }))
+    setAuthData((prev) => ({ ...prev, isAuth: true, access: response.body.access }))
     localStorage.setItem('access', response.body.access)
   }
 
@@ -41,12 +45,17 @@ const useAuthMethods = () => {
     setAuthData((prev) => ({ ...prev, user: response.body }))
   }
 
+  const otpEntryAborted = () => {
+    setAuthData((prev) => ({ ...prev, isLogining: false }))
+  }
+
   return {
     signIn,
     confirm,
     refresh,
     guestInit,
     loadUser,
+    otpEntryAborted
   }
 }
 
