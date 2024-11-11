@@ -17,6 +17,7 @@ const AuthPage: React.FC = () => {
   const [isOtpWrong, setIsOtpWrong] = useState(false)
   const [isOtpWasSentAuto, setIsOtpWasSentAuto] = useState(false)
   const [isLogining, setIsLogining] = useState(false)
+  const [tick, setTick] = useState(0)
   const navigate = useNavigate();
   const { signIn, confirm, refresh, otpEntryAborted } = useAuthMethods();
 
@@ -37,11 +38,18 @@ const formHandler = () => {
   }
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setTick((prevValue) => ((prevValue - 1) % 3))
+    }, 750)
+
     if (localStorage.getItem('access')) {
       refresh();
     }
 
-    return () => otpEntryAborted()
+    return () => {
+      clearInterval(interval)
+      otpEntryAborted()
+    }
   }, [])
 
   const handleOtpChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +96,7 @@ const formHandler = () => {
               className={styles.button}
               isDisable={!isLogining && !isEmailValid(email) || isLogining && !isOtpValid(otp)}
               onClick={() => formHandler()}>
-              {loading ? 'Загрузка..' : 'Далее'}
+              {loading ? `загрузка${'...'.slice(tick)}` : 'далее'}
             </Button>
           </div>
         </div>

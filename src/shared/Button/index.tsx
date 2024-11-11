@@ -29,10 +29,10 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <Link to={linkTo} className={[styles.btn, className, isDisable ? styles.disabled : ''].join(' ')} onClick={onClick}>
-      <svg width="194" height="78" viewBox="0 0 194 78" fill="none">
-        <path d="M1 1L193 4.5L181.63 68.5L8.1726 77L1 1Z" stroke="#6B6C6F" strokeMiterlimit="10"
-          strokeDasharray="2 2" />
-        <text x='50%' y='70%' textAnchor="middle" fontSize='48px' fill="#6B6C6F">{children}</text>
+      <svg width="230px" height="78" fill="none">
+        <path d="M1 1L220 5L210 69L8 77L1 1Z" stroke="#6B6C6F" strokeMiterlimit="10"
+          strokeDasharray="9 8" />
+        <text x='50%' y='70%' textAnchor='middle' fontSize='48px' fill="#6B6C6F">{children}</text>
       </svg>
 
     </Link >
