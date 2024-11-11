@@ -7,7 +7,7 @@ const Loader: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setValue((prevValue) => (prevValue + 1) % 3)
-    }, 750)
+    }, 500)
 
     return () => clearInterval(interval)
   }, [])

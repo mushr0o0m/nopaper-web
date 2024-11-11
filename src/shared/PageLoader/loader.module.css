@@ -22,7 +22,7 @@
 }
 
 .word_first{
-  transform: rotate(-5deg) ;
+  transform: rotate(-5deg) translate(0px, -13px);
   color: var(--alert);
 }
 
@@ -32,6 +32,6 @@
 }
 
 .word_third{
-  transform: rotate(5deg) ;
+  transform: rotate(5deg) translate(0px, -13px);
   color: var(--neon-green);
 }
