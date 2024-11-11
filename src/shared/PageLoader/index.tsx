@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 import style from './loader.module.css'
 
 const Loader: React.FC = () => {
@@ -11,8 +11,6 @@ const Loader: React.FC = () => {
 
     return () => clearInterval(interval)
   }, [])
-
-
 
   return (
     <div className={style.loader}>
