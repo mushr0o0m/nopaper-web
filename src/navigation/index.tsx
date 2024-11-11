@@ -13,7 +13,7 @@ import useAuthMethods from "@/pages/Authorization/hooks/useAuthMethods";
 import useExercisesLoad from "@/pages/Task/hooks/useExercisesLoad";
 import {useEffect} from "react";
 import AuthorizationPage from "@/pages/Authorization";
-import Loader from '@/pages/TestLoader';
+import Loader from '@/shared/PageLoader';
 
 const AppRouter: React.FC = () => {
   const { loadUser, guestInit } = useAuthMethods()
