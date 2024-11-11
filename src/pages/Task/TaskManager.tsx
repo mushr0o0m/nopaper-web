@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
-import { LevelType } from '../../shared/Dot/Dot'
+import { LevelType } from '../../shared/Dot'
 import ProgressBar from '../../shared/ProgressBar/ProgressBar'
 import styles from './styles/taskManager.module.css'
 import Star from '../../shared/Star/Star'
@@ -20,22 +20,22 @@ const TaskManager: React.FC = () => {
 
   const navigate = useNavigate()
   const [taskIndex, setTaskIndex] = useState(0)
-  const [taskData, setTaskData] = useState<ITask[]>([])
 
   useEffect(() => {
     if (!groupId) {
       navigate('/404', { replace: true })
       return
     }
-
-    setTaskData(groupTasks)
-    navigateToTempTaskContent(groupTasks[0].id)
   }, [])
 
+  useEffect(() => {
+    if(groupTasks)
+    navigateToTempTaskContent(groupTasks[0]?.id)
+  }, [groupTasks])
+  
   const navigateToTempTaskContent = (taskId: string) => {
     navigate(`${taskId}`, { replace: true })
   }
-
   const groupIds = data?.groups.filter((group) => group.set === setId).map((group) => group.id) || []
 
   const tempIndexGroup = groupId ? groupIds.indexOf(groupId) + 1 : -1
@@ -51,7 +51,7 @@ const TaskManager: React.FC = () => {
             onClick={() => {
               const localIndex = taskIndex + 1
               setTaskIndex((prev) => prev + 1)
-              navigateToTempTaskContent(taskData[localIndex].id)
+              navigateToTempTaskContent(groupTasks[localIndex].id)
             }}
             isColored={false}
           >

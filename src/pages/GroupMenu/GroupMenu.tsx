@@ -15,7 +15,7 @@ const GroupMenu: React.FC = () => {
     return null
   }
 
-  const groupIds = data.groups.filter((group) => group.set === setId).map((group) => group.id) || []
+  const groupIds = data?.groups.filter((group) => group.set === setId).map((group) => group.id) || []
 
   return (
     <div className="container">

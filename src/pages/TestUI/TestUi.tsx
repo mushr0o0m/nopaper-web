@@ -1,7 +1,7 @@
 
 import ButtonDotted from '../../shared/ButtonDotted/ButtonDotted'
 import Curtains from '../../shared/Curtains/Curtains'
-import { LevelType } from '../../shared/Dot/Dot'
+import { LevelType } from '../../shared/Dot'
 import Pointer from '../../shared/Pointer/Pointer'
 import ProgressBar from '../../shared/ProgressBar/ProgressBar'
 import Rocket from '../../shared/Rocket/Rocket'

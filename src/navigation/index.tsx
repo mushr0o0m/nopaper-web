@@ -13,6 +13,7 @@ import useAuthMethods from "@/pages/Authorization/hooks/useAuthMethods";
 import useExercisesLoad from "@/pages/Task/hooks/useExercisesLoad";
 import {useEffect} from "react";
 import AuthorizationPage from "@/pages/Authorization";
+import Loader from '@/pages/TestLoader';
 
 const AppRouter: React.FC = () => {
   const { loadUser, guestInit } = useAuthMethods()
@@ -28,6 +29,7 @@ const AppRouter: React.FC = () => {
         <Route path="/" element={<Welcome />} index={true} />
         <Route path="/test-ui" element={<TestUi />} />
         <Route path="/test-dnd" element={<TestDnd />} />
+        <Route path="/test-loader" element={<Loader />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/" element={<Welcome />} />
         <Route path="/auth" element={<AuthorizationPage />} />

@@ -1,4 +1,4 @@
-import Dot, {LevelType} from "../Dot/Dot.tsx";
+import Dot, {LevelType} from "../Dot/index.jsx";
 import {FC} from "react";
 import styles from './ScoreBar.module.css';
 

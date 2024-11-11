@@ -16,7 +16,9 @@ const SetMenu: React.FC = () => {
     return null
   }
 
+  console.log(data)
   const setIds = data?.sets.filter((set) => set.level === levelId).map((set) => set.id) || []
+  console.log(setIds)
 
   const MenuComponent = setMenuById.get(levelId)
 
