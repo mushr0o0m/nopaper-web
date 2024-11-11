@@ -6,6 +6,8 @@
   --purple: #a482bb;
   --green: #90bfbe;
   --blue: #a5bed7;
+  --transparent-grey: rgba(237, 237, 238, 20%);
+  --white: rgba(255, 255, 255, 100);
   --light-grey: rgba(237, 237, 238, 100);
   --mid-grey: rgba(167, 169, 172, 100);
   --dark-grey: rgba(107, 108, 111, 100);

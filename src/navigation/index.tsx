@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import NotFound from '@/pages/404/NotFound';
+import AuthorizationPage from '@/pages/Authorization';
+import useAuthMethods from '@/pages/Authorization/hooks/useAuthMethods';
+import GroupMenu from '@/pages/GroupMenu/GroupMenu';
+import LevelMenu from '@/pages/LevelMenu/LevelMenu';
+import SetMenu from '@/pages/SetMenu/SetMenu';
+import useExercisesLoad from '@/pages/Task/hooks/useExercisesLoad';
+import TaskContent from '@/pages/Task/TaskContent';
+import TaskManager from '@/pages/Task/TaskManager';
+import TestDnd from '@/pages/TestDnd/TestDnd';
+import TestUi from '@/pages/TestUI/TestUi';
+import Welcome from '@/pages/Welcome/Welcome';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NotFound from '../pages/404/NotFound';
-import GroupMenu from '../pages/GroupMenu/GroupMenu';
-import LevelMenu from '../pages/LevelMenu/LevelMenu';
-import SetMenu from '../pages/SetMenu/SetMenu';
-import TaskContent from '../pages/Task/TaskContent';
-import TaskManager from '../pages/Task/TaskManager';
-import TestUi from '../pages/TestUI/TestUi';
-import Welcome from '../pages/Welcome/Welcome';
-import TestDnd from '../pages/TestDnd/TestDnd';
-import useAuthMethods from "@/pages/Authorization/hooks/useAuthMethods";
-import useExercisesLoad from "@/pages/Task/hooks/useExercisesLoad";
-import {useEffect} from "react";
-import AuthorizationPage from "@/pages/Authorization";
 
 const AppRouter: React.FC = () => {
   const { loadUser, guestInit } = useAuthMethods()

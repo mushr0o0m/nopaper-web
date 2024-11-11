@@ -6,6 +6,7 @@ export interface IHTTPSuccessResponse<T = undefined> {
 export interface IHTTPErrorResponse {
   status: 'error'
   message: string
+  statusCode: number
   body?: Record<string, string>
 }
 

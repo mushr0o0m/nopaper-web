@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { LevelType } from '../../shared/Dot/Dot'
-import ProgressBar from '../../shared/ProgressBar/ProgressBar'
 import styles from './styles/taskManager.module.css'
 import Star from '../../shared/Star/Star'
 import SmallButton from '../../shared/SmallButton/SmallButton'
@@ -11,6 +10,7 @@ import { useRecoilValue } from 'recoil'
 import exerciseSelectors from './exercise.selectors'
 import { ITask } from './exercise.types'
 import useGroupTasks from './hooks/useGroupTasks'
+import ProgressBar from '@/shared/ProgressBar/ProgressBar'
 
 const TaskManager: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)

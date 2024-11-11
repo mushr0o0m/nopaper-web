@@ -8,9 +8,14 @@ export const handleHttpResponse = <T extends any>(
 }
 
 export const handleHttpError = (error: AxiosError): IHTTPErrorResponse => {
+  console.log(error)
   if (error?.response?.status === 400) {
     console.log('Validation error')
   }
+  else{
+    //
+  }
 
-  return { status: 'error', message: error?.message }
+  return { status: 'error', statusCode: error?.response?.status, message: error?.message }
+
 }

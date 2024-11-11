@@ -4,68 +4,104 @@
   flex-direction: column;
   justify-content: center;
   background: url('/src/assets/backgrounds/bg-1.png');
+  padding: 80px 75px;
 }
 
-.loginCard {
-  height: fit-content;
-  background: #fff;
-  border-radius: 1em;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, .25);
+.loginData {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
-  padding: 2em;
-  width: 600px;
+  height: inherit;
+  justify-content: space-between;
 }
 
 .loginCard__header {
-  font-size: 48px;
+  font-size: 64px;
   letter-spacing: 3px;
-  margin-bottom: 50px;
   text-align: center;
+  margin-bottom: 124px;
 }
 
 .inputForm {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 50px;
+  align-items: center;
+  width: 100%;
 }
 
-.loginCard__footer{
+.loginCard__confirm{
   display: flex;
   justify-content: center;
 }
 
 .label {
-  font-size: 22px;
+  font-size: 48px;
+  margin-bottom: 24px;
+  max-width: 850px;
+}
+
+.confirmLabel {
+  font-size: 64px;
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.email {
+  font-weight: bold;
 }
 
 .input {
-  border: 1px solid var(--gray);
-  border-radius: 4px;
-  font-size: 32px;
-  height: 48px;
-  min-width: 300px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 48px;
+  width: 100%;
+  padding: 13px 0;
+  text-align: center;
   outline: none;
-  padding: 5px 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.input::placeholder {
+  color: #888888;
+  opacity: 0.7;
+}
+
+.input:focus{
+  box-shadow: 0 0 0 2px var(--gray);
+}
+
+.input_invalid{
+  box-shadow: 0 0 0 2px var(--alert);
+  color: var(--alert);
+}
+
+.input_invalid:focus{
+  box-shadow: 0 0 0 2px var(--alert);
+  color: var(--alert);
+}
+
+.input__alert_confirm{
+  color: var(--alert);
+  font-size: 24px;
+}
+
+.input_confirm {
+  margin-bottom: 8px;
+  width: 371px;
+}
+
+.waitLine {
+  font-size: 24px;
 }
 
 .button {
-  color: #fff;
-  background: var(--blue);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 32px;
   min-width: 130px;
-  outline: none;
   padding: 10px 15px;
-  position: relative;
-  text-align: center;
 }
+
+
 
 .button:hover {
   -webkit-filter: brightness(105%);
@@ -75,4 +111,33 @@
 .button:active {
   -webkit-filter: brightness(110%);
   filter: brightness(110%);
+}
+
+.loginCard__footer {
+  font-size: 20px;
+  line-height: 32px;
+  width: 540px;
+  text-align: center;
+}
+
+.loginCard__input{
+  width: 100%;
+  margin-bottom: 56px;
+}
+
+.confirmCard__input{
+  margin-bottom: 8px;
+}
+
+.confirmCard__resendOtpBtn{
+  border: none;
+  background: none;
+  color: var(--dark-grey);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
 }
