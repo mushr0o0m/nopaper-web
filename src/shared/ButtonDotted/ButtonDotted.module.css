@@ -4,9 +4,9 @@
     color: var(--dark-grey);
     background-color: transparent;
     border: 1px dashed var(--dark-grey);
-    padding: 0;
+    padding: 0 40px;
 
     cursor: pointer;
-    width: 194px;
+    width: fit-content;
     height: 78px;
 }

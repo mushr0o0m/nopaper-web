@@ -1,0 +1,71 @@
+.settingsPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 75px;
+}
+
+.settingsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bigTitle {
+    margin-bottom: 150px;
+    font-size: 80px;
+}
+
+.smallTitle {
+    font-size: 72px;
+    margin-top: -15px;
+}
+
+.unauthBtnsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 66px;
+    font-size: 54px;
+}
+
+.authContent {
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 75px;
+}
+
+.planInfo {
+    font-size: 32px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.planTitle {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.planNote {
+    font-size: 24px;
+}
+
+.userMail {
+    border: var(--gray) 2px solid;
+    border-radius: 10px;
+    padding: 13px 48px;
+    font-size: 48px;
+    color: var(--purple);
+    background-color: var(--transparent-grey); /*надо другой процент прозр*/
+}
+
+.actButton {
+    font-size: 32px;
+    text-decoration: underline;
+}

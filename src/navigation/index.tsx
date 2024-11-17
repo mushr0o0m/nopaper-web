@@ -13,6 +13,7 @@ import TestUi from '@/pages/TestUI/TestUi';
 import Welcome from '@/pages/Welcome/Welcome';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Settings from "@/pages/Settings/Settings";
 
 const AppRouter: React.FC = () => {
   const { loadUser, guestInit } = useAuthMethods()
@@ -37,6 +38,7 @@ const AppRouter: React.FC = () => {
         <Route path="/level-menu/:levelId/set-menu/:setId/group-menu/:groupId/task/" element={<TaskManager />}>
           <Route path=":taskId" element={<TaskContent />} />
         </Route>
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   )
