@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './styles/groupMenu.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
-import LevelMenuElement from './modules/LevelMenuElement/LevelMenuElement'
 import { useRecoilValue } from 'recoil'
 import exerciseSelectors from '../Task/exercise.selectors'
+import LevelMenuElement from './modules/LevelMenuElement/LevelMenuElement'
+import SetMenu from '../SetMenu'
 
 const GroupMenu: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
   const { setId } = useParams()
   const navigate = useNavigate()
-  const [groupIds, setGroupIds] = useState<string[]>([])
   
-  useEffect(() => {
-    if(data)
-      setGroupIds( data.groups.filter((group) => group.set === setId).map((group) => group.id) || [])
-
-  }, [data])
+  const groupIds = data?.groups.filter((group) => group.set === setId).map((group) => group.id) || []
 
   if (!setId) {
     navigate('/404')
@@ -23,6 +19,8 @@ const GroupMenu: React.FC = () => {
   }
 
   return (
+    <>
+    <SetMenu/>
     <div className="container">
       {[0, 5].map((n) => (
         <section key={n} className={styles.levelSection}>
@@ -38,6 +36,7 @@ const GroupMenu: React.FC = () => {
         </section>
       ))}
     </div>
+    </>
   )
 }
 

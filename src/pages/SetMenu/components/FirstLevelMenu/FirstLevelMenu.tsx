@@ -1,23 +1,25 @@
+import Rocket from '@/shared/Rocket'
 import React from 'react'
-import Rocket from '../../../../shared/Rocket/Rocket'
 
-interface FirstLevelMenuProps {
+export interface FirstLevelMenuProps {
   setIds: string[]
   tempSetId: string
+  styles: CSSModuleClasses
+  levelId: string
 }
 
-const FirstLevelMenu: React.FC<FirstLevelMenuProps> = ({ setIds, tempSetId }) => {
+const FirstLevelMenu: React.FC<FirstLevelMenuProps> = ({ setIds, tempSetId, styles, levelId }) => {
   const tempSetIndex = setIds.findIndex((e) => e === tempSetId)
+  
 
   return (
-    <div className="rockets">
+    <div className={styles.rockets} >
       {setIds.map((id, index) => (
-        <Rocket
+        <Rocket 
           key={id}
-          type={index + 1}
-          outlined={!(index === tempSetIndex)}
+          type={index + 1 + 5 * Number(index !== tempSetIndex)}
           active={index === tempSetIndex + 1}
-          linkTo={`${id}/group-menu`}
+          linkTo={`/level-menu/${levelId}/set-menu/${id}/group-menu`}
         />
       ))}
     </div>
