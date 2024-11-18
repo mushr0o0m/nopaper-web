@@ -10,7 +10,7 @@ const GroupMenu: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
   const { setId } = useParams()
   const navigate = useNavigate()
-  
+
   const groupIds = data?.groups.filter((group) => group.set === setId).map((group) => group.id) || []
 
   if (!setId) {
@@ -19,24 +19,14 @@ const GroupMenu: React.FC = () => {
   }
 
   return (
-    <>
-    <SetMenu/>
-    <div className="container">
-      {[0, 5].map((n) => (
-        <section key={n} className={styles.levelSection}>
-          {groupIds.slice(n, n + 5).map((id, index) => (
-            <LevelMenuElement
-              linkTo={`${id}/task`}
-              key={id}
-              colorIndex={index + 1 + n}
-              isOn={true}
-              index={index + 1 + n}
-            />
-          ))}
-        </section>
-      ))}
+    <div className={styles.pageWrapper}>
+      <SetMenu />
+      <div className={styles.wrapper}>
+        {groupIds.map((id, index) => (
+          <LevelMenuElement linkTo={`${id}/task`} key={id} colorIndex={index} isOn={true} index={index} />
+        ))}
+      </div>
     </div>
-    </>
   )
 }
 
