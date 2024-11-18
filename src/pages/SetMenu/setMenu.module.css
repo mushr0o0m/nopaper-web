@@ -9,22 +9,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  transition: top  0.75s cubic-bezier(0.75, -0.35, 0.35, 1.40);
+  will-change: top;
+  transition:  0.75s cubic-bezier(0.75, -0.35, 0.35, 1.40);
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
 }
 
-.sheet::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 1000px;
-}
-
-.sheet:hover {
+.sheet:hover,
+.sheet[data-open="true"] {
   top: -80px;
 }
 
