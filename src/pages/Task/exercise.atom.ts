@@ -10,8 +10,8 @@ export interface IExercise{
 export const exerciseState = atom<IExercise>({
   key: 'exerciseState',
   default: {
-    'exercisePack': undefined,
-    'isPackRequested': false,
-    'exercisePackId': "",
+    exercisePack: undefined,
+    isPackRequested: false,
+    exercisePackId: "",
   },
 })

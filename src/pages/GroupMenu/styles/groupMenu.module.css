@@ -1,11 +1,14 @@
-.levelSection{
+.pageWrapper {
   display: flex;
-  padding: 150px 0;
-  gap: 80px;
-  justify-content: space-between
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.levelRow{
-  display: flex;
-  gap: 56px;
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 56px;
+  row-gap: 32px;
 }

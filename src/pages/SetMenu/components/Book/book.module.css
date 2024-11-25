@@ -1,0 +1,28 @@
+.bookIcon {
+    display: flex;
+    padding: 20px;
+    height: 100%;
+    line-height: 0;
+    text-decoration: none;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.bookIcon:hover{
+    background-color: var(--transparent-grey);
+    border-radius: 10px;
+}
+
+.bookIcon__svg{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.bookIcon__text{
+    display: inline-block;
+    padding: 10px;
+    color: var(--white);
+    font-size: 36px;
+    line-height: 52px;
+    text-align: left;
+}

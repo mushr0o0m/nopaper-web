@@ -8,7 +8,7 @@ interface LevelMenuElementProps {
   colorIndex: number
   linkTo: string
   isOn: boolean
-  index: number
+  title: string
   recentLevel?: number
   levelAmount?: number
   isScoreBarIsOn?: boolean
@@ -18,7 +18,7 @@ const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
   colorIndex,
   linkTo,
   isOn,
-  index,
+  title,
   recentLevel = 0,
   levelAmount = 10,
   isScoreBarIsOn = false,
@@ -31,7 +31,7 @@ const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
         pointerEvents: isOn ? 'auto' : 'none',
       }}
     >
-      <h3 className={style.indexTitle}>{index}</h3>
+      <h3 className={style.indexTitle}>{title}</h3>
       <Star color={colorIndex} isOn={isOn} />
       {isScoreBarIsOn && <ScoreBar recentLevel={recentLevel} levelAmount={levelAmount} />}
     </Link>

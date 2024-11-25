@@ -3,9 +3,11 @@ import authAtom from '@/pages/Authorization/auth.atom'
 import authApi from '@/pages/Authorization/auth.api'
 import { HTTPResponse } from '@/services/http/http.types'
 import { AuthResponse, IUser } from '../auth.types'
+import useSettingsMethods from '@/pages/Settings/hooks/useSettingsMethods'
 
 const useAuthMethods = () => {
   const setAuthData = useSetRecoilState(authAtom)
+  const { loadUser } = useSettingsMethods()
 
   const signIn = async (email: string): Promise<HTTPResponse<Pick<IUser, 'id'>>> => {
     const resp = await authApi.loginUser(email)
@@ -39,18 +41,11 @@ const useAuthMethods = () => {
     await loadUser()
   }
 
-  const loadUser = async (): Promise<void> => {
-    const response = await authApi.getUserInfo()
-    if (response.status === 'error') return
-    setAuthData((prev) => ({ ...prev, user: response.body }))
-  }
-
   return {
     signIn,
     confirm,
     refresh,
     guestInit,
-    loadUser,
   }
 }
 

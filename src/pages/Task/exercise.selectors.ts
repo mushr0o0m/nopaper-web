@@ -1,4 +1,4 @@
-import { selector } from 'recoil'
+import { selector, selectorFamily } from 'recoil'
 import { exerciseState } from './exercise.atom'
 import authAtom from '@/pages/Authorization/auth.atom'
 
@@ -16,6 +16,15 @@ const getExerciseDataByUserStatus = selector({
   },
 })
 
-const exerciseSelectors = { getExerciseDataByUserStatus }
+const getSetIdsByLevelId = selectorFamily({
+  key: 'getSetIdsByLevelId',
+  get: (levelId) => ({ get }) => {
+    const data = get(getExerciseDataByUserStatus);
+    
+    return data?.sets.filter((set) => set.level === levelId).map((set) => set.id)
+  }
+})
+
+const exerciseSelectors = { getExerciseDataByUserStatus, getSetIdsByLevelId}
 
 export default exerciseSelectors

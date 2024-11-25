@@ -8,6 +8,13 @@
   background-color: var(--white);
   border-radius: 12px;
   align-items: center;
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+  box-shadow: 12px 12px 0 rgba(151, 97, 83, 0.2);
+}
+
+.levelCard:hover{
+  transform: scale(1.05);
+  box-shadow: 20px 20px 0 rgba(151, 97, 83, 0.2);
 }
 
 .levelCard__subTitle{
@@ -34,3 +41,4 @@
   text-align: left;
   max-width: 330px;
 }
+

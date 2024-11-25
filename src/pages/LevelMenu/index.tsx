@@ -8,14 +8,16 @@ const LevelMenu: React.FC = () => {
 
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
 
+  const defSetIdByLevel = (levelId: string) => data?.sets.find((el) => el.level === levelId).id || ''
+
   return (
     <div className='container'>
       <div className={styles.centerArea}>
         <h1 className={styles.text}>ВЫБЕРИТЕ<br />
           УРОВЕНЬ СЛОЖНОСТИ</h1>
         <div className={styles.levels}>
-          <LevelCard level={'level_1'} levelId='first_level' defSetId={data?.sets[0].id}/> 
-          <LevelCard level={'level_2'} levelId='second_level' defSetId={data?.sets[0].id}/> 
+          <LevelCard levelId='first_level' defSetId={defSetIdByLevel('first_level')}/> 
+          <LevelCard levelId='second_level' defSetId={defSetIdByLevel('second_level')}/> 
         </div>
       </div>
     </div>

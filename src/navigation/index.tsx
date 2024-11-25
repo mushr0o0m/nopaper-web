@@ -4,6 +4,7 @@ import AuthorizationPage from '@/pages/Authorization';
 import useAuthMethods from '@/pages/Authorization/hooks/useAuthMethods';
 import GroupMenu from '@/pages/GroupMenu';
 import LevelMenu from '@/pages/LevelMenu';
+import useSettingsMethods from '@/pages/Settings/hooks/useSettingsMethods';
 import useExercisesLoad from '@/pages/Task/hooks/useExercisesLoad';
 import TaskContent from '@/pages/Task/TaskContent';
 import TaskManager from '@/pages/Task/TaskManager';
@@ -13,7 +14,8 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const AppRouter: React.FC = () => {
-  const { loadUser, guestInit } = useAuthMethods()
+  const { guestInit } = useAuthMethods()
+  const { loadUser } = useSettingsMethods()
   const { loadExercises } = useExercisesLoad()
 
   useEffect(() => {

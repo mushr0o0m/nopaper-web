@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from 'react'
-import { Outlet, useNavigate, useParams } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { LevelType } from '../../shared/Dot/Dot'
 import styles from './styles/taskManager.module.css'
 import Star from '../../shared/Star/Star'
@@ -19,6 +19,7 @@ const TaskManager: React.FC = () => {
   const groupTasks = useGroupTasks(groupId + '')
 
   const navigate = useNavigate()
+  const location = useLocation()
   const [taskIndex, setTaskIndex] = useState(0)
   const [taskData, setTaskData] = useState<ITask[]>([])
 
@@ -44,7 +45,7 @@ const TaskManager: React.FC = () => {
     <div className="container">
       <div className={styles.window}>
         <header>
-          <SmallButton onClick={() => navigate('../..', { replace: true, relative: 'path' })} isColored={false}>
+          <SmallButton onClick={() => navigate('../..', { replace: true, relative: 'path', state: location.state?.tempSetIndex })} isColored={false}>
             назад
           </SmallButton>
           <SmallButton
