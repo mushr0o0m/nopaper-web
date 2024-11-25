@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './ProgressBar.module.css'
-import Dot, { LevelType } from '@/shared/Dot/Dot'
+import Dot, { LevelType } from '@/shared/Dot'
 
 export type LevelInfo = {
   level: number
