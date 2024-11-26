@@ -22,7 +22,7 @@ const Button: FC<ButtonProps> = (props) => {
   return (
     <Link
       to={'linkTo' in props ? props.linkTo : undefined}
-      className={[styles.btn, props.className, props.isDisable === false ? styles.disabled : ''].join(' ')}
+      className={[styles.btn, props.className, props.isDisable === true ? styles.disabled : ''].join(' ')}
       onClick={'onClick' in props ? props.onClick : undefined}
     >
       <svg width="230px" height="78" fill="none">

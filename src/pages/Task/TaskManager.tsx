@@ -3,13 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import { LevelType } from '../../shared/Dot'
-import ProgressBar from '../../shared/ProgressBar/ProgressBar'
 import styles from './styles/taskManager.module.css'
-import Star from '../../shared/Star/Star'
+import Star from '../GroupMenu/modules/LevelMenuElement/components/Star'
 import SmallButton from '../../shared/SmallButton/SmallButton'
 import { useRecoilValue } from 'recoil'
 import exerciseSelectors from './exercise.selectors'
-import { ITask } from './exercise.types'
 import useGroupTasks from './hooks/useGroupTasks'
 import ProgressBar from '@/shared/ProgressBar/ProgressBar'
 
@@ -20,7 +18,6 @@ const TaskManager: React.FC = () => {
   const groupTasks = useGroupTasks(groupId + '')
 
   const navigate = useNavigate()
-  const location = useLocation()
   const [taskIndex, setTaskIndex] = useState(0)
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const TaskManager: React.FC = () => {
     <div className="container">
       <div className={styles.window}>
         <header>
-          <SmallButton onClick={() => navigate('../..', { replace: true, relative: 'path', state: location.state?.tempSetIndex })} isColored={false}>
+          <SmallButton onClick={() => navigate('../..', { replace: true, relative: 'path'})} isColored={false}>
             назад
           </SmallButton>
           <SmallButton

@@ -7,11 +7,23 @@ export const useExercisesLoad = () => {
 
   const fetchExercisePack = async () => {
     const availablePacks = await exerciseApi.getListAvailableExercisePacks()
-    if (availablePacks.status === 'error') return
+    if (availablePacks.status === 'error'){
+      setExerciseData(prev => ({
+        ...prev,
+        isPackRequested: false,
+      }))
+      return
+    }
 
     const productionPack = availablePacks.body.results[0]
     const productionPackWithData = await exerciseApi.getExercisePackData(productionPack.id)
-    if (productionPackWithData.status === 'error') return
+    if (productionPackWithData.status === 'error'){
+      setExerciseData(prev => ({
+        ...prev,
+        isPackRequested: false,
+      }))
+      return
+    }
 
     setExerciseData((prev) => ({
       ...prev,
@@ -20,12 +32,16 @@ export const useExercisesLoad = () => {
         publicDataJson: productionPackWithData.body.publicDataJson,
         privateDataJson: productionPackWithData.body.privateDataJson,
       },
-      isPackRequested: true,
+      isPackRequested: false,
     }))
   }
 
   const loadExercises = async () => {
-    if (!exerciseData.exercisePack && !exerciseData.isPackRequested) {
+    if (!exerciseData.exercisePack) {
+      setExerciseData(prev => ({
+        ...prev,
+        isPackRequested: true,
+      }))
       await fetchExercisePack()
     }
   }

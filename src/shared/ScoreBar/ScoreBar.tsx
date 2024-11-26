@@ -1,34 +1,42 @@
-import Dot, {LevelType} from "../Dot/index.jsx";
-import {FC} from "react";
+import { FC } from "react";
 import styles from './ScoreBar.module.css';
+import { IUserProgress } from "@/pages/Settings/user.types.js";
+import Dot from '@/assets/svg/scoreBar/dot.svg?react'
 
 export interface ScoreBarProps {
-    recentLevel: number,
-    levelAmount: number,
-    className?: string
+  groupProgress: IUserProgress
+  className?: string
 }
 
 const ProgressBar: FC<ScoreBarProps> = ({
-                                            recentLevel,
-                                            levelAmount,
-                                            className,
-                                            ...props}) => {
-    const levels: LevelType[] = []
-    for (let i = 0; i <= levelAmount; i++) {
-        if (i <= recentLevel) {
-            levels.push(LevelType.Correct)
-        } else {
-            levels.push(LevelType.Default)
-        }
-    }
+  groupProgress,
+  className,
+}) => {
 
-    return (
-        <div {...props} className={[styles.bar, className ?? ''].join(' ')}>
-            {levels.map((level, index): JSX.Element =>
-                <Dot key={index} dotType={level} className={['dot--score',level == LevelType.Correct ? 'dot--score-correct' : ''].join(' ')}/>
-            )}
-        </div>
-    );
+  const colorByProgress = (IsTaskSolved: boolean | null) => {
+    switch (IsTaskSolved) {
+      case true:
+        return '--success'
+      case false:
+        return '--alert'
+      default:
+        return '--white'
+    }
+  }
+
+  return (
+    <div className={[styles.bar, className ?? ''].join(' ')}>
+      {Object.values(groupProgress).map((isTaskSolved, index): JSX.Element =>
+        <Dot
+          key={index}
+          style={{
+            color: `var(${colorByProgress(isTaskSolved)})`,
+            transform: 'translateX(-12px)'
+          }}
+        />
+      )}
+    </div>
+  );
 };
 
 export default ProgressBar;

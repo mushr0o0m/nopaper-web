@@ -1,4 +1,5 @@
-import { ITask } from "../../contextes/ExerciseContext/exercise.types";
+import { ITask } from "./exercise.types";
+
 
 export interface TaskTypesProps{
   task: ITask,

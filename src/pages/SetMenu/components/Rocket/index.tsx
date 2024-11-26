@@ -28,7 +28,6 @@ const levelIconByType: React.FunctionComponent<React.SVGProps<SVGSVGElement>>[] 
 const Rocket: FC<LevelIconProps> = ({ type, tempSetIndex, linkTo }) => {
 
   const Rocket = levelIconByType[type]
-  console.log(tempSetIndex)
   return (
     <Link to={linkTo} className={styles.rocket}>
       <Rocket />

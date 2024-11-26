@@ -1,5 +1,9 @@
 import { atom } from 'recoil'
-import { ISettings } from './settings.types'
+import { IUser } from './user.types'
+
+export interface ISettings {
+  user: IUser
+}
 
 const settingsAtom = atom<ISettings>({
   key: 'settingsState',

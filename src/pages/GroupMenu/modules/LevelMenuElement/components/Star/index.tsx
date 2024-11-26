@@ -1,12 +1,11 @@
 import { FC } from 'react';
 import styles from './Star.module.css'
-import { ColorType } from '../../models';
 
 export interface StarProps {
-  color: number | ColorType,
+  color: number,
   isOn: boolean
 }
-const Star: FC<StarProps> = ({ color, isOn, ...props }) => {
+const Star: FC<StarProps> = ({ color, isOn }) => {
 
   const colorByIndex = (): string => 
     {
@@ -17,7 +16,7 @@ const Star: FC<StarProps> = ({ color, isOn, ...props }) => {
     }
 
   return (
-    <div {...props}>
+    <div>
       {isOn ? (
         <svg width="95" height="95" viewBox="0 0 95 95" fill="none" xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink">

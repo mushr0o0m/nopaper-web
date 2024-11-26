@@ -1,39 +1,42 @@
 import React from 'react'
 import style from './styles/levelMenuElement.module.css'
 import { Link } from 'react-router-dom'
-import Star from '../../../../shared/Star/Star'
 import ScoreBar from '../../../../shared/ScoreBar/ScoreBar'
+import Star from './components/Star'
+import { IUserProgress } from '@/pages/Settings/user.types'
 
 interface LevelMenuElementProps {
   colorIndex: number
   linkTo: string
-  isOn: boolean
   title: string
-  recentLevel?: number
-  levelAmount?: number
+  isActive: boolean
+  isLock: boolean
+  progress: IUserProgress
   isScoreBarIsOn?: boolean
 }
 
 const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
   colorIndex,
   linkTo,
-  isOn,
+  isActive,
+  isLock,
   title,
-  recentLevel = 0,
-  levelAmount = 10,
-  isScoreBarIsOn = false,
+  progress,
+  isScoreBarIsOn = true,
 }) => {
   return (
     <Link
       to={linkTo}
       className={style.levelElement}
       style={{
-        pointerEvents: isOn ? 'auto' : 'none',
+        pointerEvents: isActive ? 'auto' : 'none',
+        opacity: isActive ? '1' : '0.5',
+        backgroundColor: isLock ? 'red' : 'none'
       }}
     >
       <h3 className={style.indexTitle}>{title}</h3>
-      <Star color={colorIndex} isOn={isOn} />
-      {isScoreBarIsOn && <ScoreBar recentLevel={recentLevel} levelAmount={levelAmount} />}
+      <Star color={colorIndex} isOn={isActive} />
+      {isScoreBarIsOn && <ScoreBar groupProgress={progress} />}
     </Link>
   )
 }
