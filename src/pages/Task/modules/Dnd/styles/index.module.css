@@ -1,0 +1,13 @@
+.taskWord {
+  cursor: grab;
+  position: relative;
+  transition: background-color ease-in-out .3s;
+  background: transparent;
+  border: 2px dashed var(--gray);
+  border-radius: 5px;
+  font-size: 32px;
+  outline: none;
+  padding: 5px 20px;
+  position: relative;
+  text-align: center;
+}

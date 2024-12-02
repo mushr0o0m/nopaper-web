@@ -1,11 +1,11 @@
 import { selector, selectorFamily } from 'recoil'
 import { exerciseState } from './exercise.atom'
-import authAtom from '@/pages/Authorization/auth.atom'
+import settingsAtom from '../Settings/settings.atom'
 
 const getExerciseDataByUserStatus = selector({
   key: 'getExerciseDataByUserStatus',
   get: ({ get }) => {
-    const { user } = get(authAtom)
+    const { user } = get(settingsAtom)
     const { exercisePack } = get(exerciseState)
 
     if (user?.isSuperuser || (user?.subscriptions && user?.subscriptions.length > 0)) {

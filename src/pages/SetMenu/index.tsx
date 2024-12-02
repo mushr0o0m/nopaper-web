@@ -6,6 +6,7 @@ import styles from './setMenu.module.css'
 import Rocket from './components/Rocket'
 import Book from './components/Book'
 import { LevelIconProps } from './setMenu.types'
+import settingsSelectors from '../Settings/settings.selectors'
 
 const levelIconByLevelId: Record<string, React.FC<LevelIconProps>> = {
   'first_level': Rocket,
@@ -15,6 +16,7 @@ const levelIconByLevelId: Record<string, React.FC<LevelIconProps>> = {
 const SetMenu: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
   const ref = useRef<HTMLDivElement>(null);
+  const progress = useRecoilValue(settingsSelectors.getSolvedSets)
   const { levelId, setId } = useParams()
   const navigate = useNavigate()
 
@@ -36,12 +38,13 @@ const SetMenu: React.FC = () => {
   return (
     <div className={styles.sheet} >
       <div className={styles.levelIcons} ref={ref} onWheel={handleWheel}>
-        {setIds.map((id, index) => (
+        {setIds.map((id, index, arr) => (
           <LevelIcon
             key={id}
-            type={index + setIds.length * Number(index !== tempSetIndex)}
-            tempSetIndex={index}
-            // active={index === tempSetIndex + 1}
+            index={index}
+            isFinished={progress[id]}
+            isTempSet={index === tempSetIndex}
+            isAvilable={id === arr[0] || progress[arr[index - 1]]}
             linkTo={`/level-menu/${levelId}/set-menu/${id}/group-menu`}
           />
         ))}

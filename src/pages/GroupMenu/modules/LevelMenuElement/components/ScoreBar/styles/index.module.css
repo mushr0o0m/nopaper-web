@@ -1,0 +1,11 @@
+.bar {
+    display: flex;
+    width: 122px;
+    height: 14px;
+    position: relative;
+}
+
+.bar__dot{
+    position: absolute;
+    line-height: 14px;
+}

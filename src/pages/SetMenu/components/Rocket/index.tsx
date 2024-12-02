@@ -19,26 +19,35 @@ const levelIconByType: React.FunctionComponent<React.SVGProps<SVGSVGElement>>[] 
   Rocket3,
   Rocket4,
   Rocket5,
+]
+
+const levelIconOutlineByType: React.FunctionComponent<React.SVGProps<SVGSVGElement>>[] = [
   RocketOutline1,
   RocketOutline2,
   RocketOutline3,
   RocketOutline4,
   RocketOutline5,
 ]
-const Rocket: FC<LevelIconProps> = ({ type, tempSetIndex, linkTo }) => {
+const Rocket: FC<LevelIconProps> = ({ index, isTempSet, isFinished, linkTo, isAvilable }) => {
 
-  const Rocket = levelIconByType[type]
+  const Rocket = levelIconByType[index]
+  const OutlineRocket = levelIconOutlineByType[index]
   return (
-    <Link to={linkTo} className={styles.rocket}>
-      <Rocket />
+    <Link to={linkTo} className={styles.rocket}
+    style={{
+      pointerEvents: isAvilable ? 'auto' : 'none'
+    }}>
+      {isFinished && <Rocket style={{position: 'absolute'}} />} 
+      <OutlineRocket style={{position: 'relative', color: `${isTempSet ? 'var(--success)' : `var(--light-grey)`}`}}/>
     </Link>
-    // <Link to={linkTo} className={styles.rocket}
-    //   style={{
-    //     pointerEvents: (type <= levelIconByType.length / 2) && !active || active ? 'auto' : 'none'
-    //   }}>
-    //   <Rocket style={{ color: `${active ? 'var(--success)' : `var(--light-grey)`}` }} />
-    // </Link>
+    
   );
 };
 
 export default Rocket;
+{/* <Link to={linkTo} className={styles.rocket}
+      style={{
+        pointerEvents: (type <= levelIconByType.length / 2) && !active || active ? 'auto' : 'none'
+      }}>
+      <Rocket style={{  }} />
+    </Link> */}

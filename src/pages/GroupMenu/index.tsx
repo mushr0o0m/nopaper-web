@@ -7,6 +7,7 @@ import LevelMenuElement from './modules/LevelMenuElement'
 import SetMenu from '../SetMenu'
 import settingsAtom from '../Settings/settings.atom'
 import settingsSelectors from '../Settings/settings.selectors'
+import useSetGroups from '../Task/hooks/useSetGroups'
 
 const levelCharIndexByLevelId: Record<string, string> = {
   'first_level': 'A',
@@ -14,21 +15,15 @@ const levelCharIndexByLevelId: Record<string, string> = {
 }
 
 const GroupMenu: React.FC = () => {
-  const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
-  const progress = useRecoilValue(settingsSelectors.getUserProgress)
+  const progress = useRecoilValue(settingsSelectors.getProgressByGroups)
   const userData = useRecoilValue(settingsAtom)
   const { setId, levelId } = useParams()
   const setIds = useRecoilValue(exerciseSelectors.getSetIdsByLevelId(levelId))
   const navigate = useNavigate()
-
-  const groups = data?.groups.filter((group) => group.set === setId) || []
+  const groups = useSetGroups(setId)
   const tempSetIndex = setIds?.findIndex((e) => e === setId)
-  // const progressCurrentSet = 
 
-  const checkIsGroupAvalible = (prevGroupId) => {
-    return Object.values(progress[prevGroupId]).filter(item => item === true).length >= 7
-  }
-
+//  console.log(progressByGroup)
   if (!setId) {
     navigate('/404')
     return null
@@ -44,9 +39,9 @@ const GroupMenu: React.FC = () => {
               key={group.id}
               colorIndex={index + 1}
               isLock={userData.user?.isGuest && group.premium}
-              isActive={group.id === arr[0].id || checkIsGroupAvalible(arr[index - 1].id)}
+              isActive={group.id === arr[0].id || progress[arr[index - 1].id].solvedTasks >= 7}
               title={`${levelCharIndexByLevelId[levelId]}${index + 1 + 10 * tempSetIndex}`} 
-              progress={progress[group.id]}
+              progress={progress[group.id].progress}
             />
           ))}
         </section>

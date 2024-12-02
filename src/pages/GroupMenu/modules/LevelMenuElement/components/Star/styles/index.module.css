@@ -1,0 +1,25 @@
+.starСontainer {
+  display: inline-block;
+  position: relative;
+}
+
+.star__starVector{
+  position: relative;
+}
+
+.star__face {
+  position: absolute;
+  right: 18px;
+  top: 24px;
+}
+
+.lock {
+  position: absolute;
+  opacity: 1 !important;
+  bottom: 0;
+  right: 0;
+}
+
+.starСontainer_off:not(.star__lock){
+  opacity: 0.5;
+}

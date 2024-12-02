@@ -13,6 +13,10 @@ import { LevelIconProps } from '../../setMenu.types';
 const levelIconByType: React.FunctionComponent<React.SVGProps<SVGSVGElement>>[] = [
   Book1,
   Book2,
+ 
+]
+
+const levelIconOutlineByType: React.FunctionComponent<React.SVGProps<SVGSVGElement>>[] = [
   BookInactive1,
   BookInactive2,
 ]
@@ -22,15 +26,15 @@ const iconTextByType: React.JSX.Element[] = [
   <>школа</>,
 ]
 
-const Book: FC<LevelIconProps> = ({ type, active, linkTo }) => {
-  const Book = levelIconByType[type]
+const Book: FC<LevelIconProps> = ({ index, isTempSet, isFinished, linkTo, isAvilable }) => {
+  const Book = levelIconByType[index]
   return (
     <Link to={linkTo} className={styles.bookIcon}
       style={{
-        pointerEvents: (type <= iconTextByType.length) && !active || active ? 'auto' : 'none'
+        pointerEvents: (index <= iconTextByType.length) && !isAvilable || isAvilable ? 'auto' : 'none'
       }}>
       <Book className={styles.bookIcon__svg}/>
-      <span className={styles.bookIcon__text}>{iconTextByType[Math.floor(type/iconTextByType.length)]}</span>
+      <span className={styles.bookIcon__text}>{iconTextByType[Math.floor(index/iconTextByType.length)]}</span>
     </Link>
   );
 };

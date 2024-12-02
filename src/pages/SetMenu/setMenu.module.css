@@ -10,6 +10,7 @@
   right: 0;
   bottom: 0;
   transition: top  0.75s cubic-bezier(0.75, -0.35, 0.35, 1.40);
+  z-index: 1000;
 }
 
 .sheet::after {
@@ -19,6 +20,7 @@
   position: absolute;
   /* background-color: red; */
   bottom: 0px;
+  z-index: 1000;
 }
 
 .sheet:hover:after {

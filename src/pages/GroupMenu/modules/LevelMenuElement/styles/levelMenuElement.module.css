@@ -1,6 +1,7 @@
 .indexTitle {
   display: inline-block;
   font-size: 92px;
+  line-height: 92px;
   text-align: center;
   font-weight: normal;
 }

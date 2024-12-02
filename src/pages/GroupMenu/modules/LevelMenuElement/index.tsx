@@ -1,18 +1,17 @@
 import React from 'react'
 import style from './styles/levelMenuElement.module.css'
 import { Link } from 'react-router-dom'
-import ScoreBar from '../../../../shared/ScoreBar/ScoreBar'
 import Star from './components/Star'
 import { IUserProgress } from '@/pages/Settings/user.types'
+import ScoreBar from './components/ScoreBar'
 
 interface LevelMenuElementProps {
-  colorIndex: number
   linkTo: string
   title: string
+  colorIndex: number
+  progress: IUserProgress
   isActive: boolean
   isLock: boolean
-  progress: IUserProgress
-  isScoreBarIsOn?: boolean
 }
 
 const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
@@ -22,20 +21,19 @@ const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
   isLock,
   title,
   progress,
-  isScoreBarIsOn = true,
 }) => {
+
+  const isScoreBarIsOn = Object.values(progress).filter(v => v !== null).length > 0
   return (
     <Link
       to={linkTo}
       className={style.levelElement}
       style={{
-        pointerEvents: isActive ? 'auto' : 'none',
-        opacity: isActive ? '1' : '0.5',
-        backgroundColor: isLock ? 'red' : 'none'
+        pointerEvents: isActive ? 'auto' : 'none'
       }}
     >
-      <h3 className={style.indexTitle}>{title}</h3>
-      <Star color={colorIndex} isOn={isActive} />
+      <h3 className={style.indexTitle} style={{opacity: isActive ? '1' : '0.5'}}>{title}</h3>
+      <Star color={colorIndex} isOn={isActive} isLock={isLock} />
       {isScoreBarIsOn && <ScoreBar groupProgress={progress} />}
     </Link>
   )

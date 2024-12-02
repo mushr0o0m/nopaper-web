@@ -11,7 +11,7 @@ const Settings: React.FC = () => {
           return <p key={index}>{key} - {userData.user[key]}</p>
       })}
       <div>
-      {userData.user.applicationState && Object.keys(userData.user.applicationState.progress).map((key, index) => (
+      {userData.user?.applicationState && Object.keys(userData.user.applicationState.progress).map((key, index) => (
         <p key={index}>{key} - {`${userData.user.applicationState.progress[key]}`}</p>
       ))}
       </div>

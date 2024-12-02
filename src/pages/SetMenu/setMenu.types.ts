@@ -1,5 +1,7 @@
 export interface LevelIconProps {
-  type: number,
-  tempSetIndex: number,
+  index: number,
   linkTo: string,
+  isFinished: boolean,
+  isTempSet: boolean,
+  isAvilable: boolean
 }
