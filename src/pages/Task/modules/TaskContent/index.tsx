@@ -4,6 +4,7 @@ import { ITask } from '../../exercise.types'
 import useTask from '../../hooks/useTask'
 import TaskType1 from './TaskByType/TaskType1'
 import { TaskTypesProps } from '../../task.types'
+import TaskType6 from './TaskByType/TaskType6'
 
 const LoadingComponent: React.FC = () => <p>Загрузка...</p>
 const taskByType: React.FC<TaskTypesProps>[] = [
@@ -12,7 +13,7 @@ const taskByType: React.FC<TaskTypesProps>[] = [
   LoadingComponent,
   LoadingComponent,
   LoadingComponent,
-  LoadingComponent,
+  TaskType6,
   LoadingComponent,
   LoadingComponent,
   LoadingComponent,
