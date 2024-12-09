@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
 import styles from './styles/taskManager.module.css'
 import Star from '../GroupMenu/modules/LevelMenuElement/components/Star'
@@ -10,20 +10,30 @@ import exerciseSelectors from './exercise.selectors'
 import useGroupTasks from './hooks/useGroupTasks'
 import ProgressBar from '@/pages/Task/components/ProgressBar'
 import settingsSelectors from '../Settings/settings.selectors'
+import eventBus from '@/eventBus'
 
 const TaskManager: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
   const progress = useRecoilValue(settingsSelectors.getProgressByGroups)
   const { groupId, setId } = useParams()
-  const groupTasks = useGroupTasks(groupId + '')
+  const groupTasks = useGroupTasks(groupId)
 
   const navigate = useNavigate()
-  const [taskIndex, setTaskIndex] = useState(0)
+  const taskIndex = useRef(0)
 
   useEffect(() => {
     if (!groupId) {
       navigate('/404', { replace: true })
       return
+    }
+
+    const unsubOnTaskFinish = eventBus.on('onTaskFinish', () => {
+      taskIndex.current += 1
+      navigateToTempTaskContent(groupTasks[taskIndex.current].id)
+    })
+
+    return () => {
+      unsubOnTaskFinish()
     }
   }, [])
 
@@ -50,15 +60,14 @@ const TaskManager: React.FC = () => {
           </SmallButton>
           <SmallButton
             onClick={() => {
-              const localIndex = taskIndex + 1
-              setTaskIndex((prev) => prev + 1)
-              navigateToTempTaskContent(groupTasks[localIndex].id)
+              taskIndex.current += 1
+              navigateToTempTaskContent(groupTasks[taskIndex.current].id)
             }}
             isColored={false}>
             вперед
           </SmallButton>
         </header>
-        <section>
+        <section className={styles.taskContent}>
           <Outlet />
         </section>
         <footer className={styles.footer}>
@@ -68,7 +77,7 @@ const TaskManager: React.FC = () => {
           </div>
           <ProgressBar
             progress={progress[groupId]?.progress || {}}
-            currentTaskIndex={taskIndex}
+            currentTaskIndex={taskIndex.current}
             className={styles.footer__pb}
           />
         </footer>
@@ -78,3 +87,5 @@ const TaskManager: React.FC = () => {
 }
 
 export default TaskManager
+
+

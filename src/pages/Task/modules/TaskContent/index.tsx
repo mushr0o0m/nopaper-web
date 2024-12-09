@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ITask } from '../../exercise.types'
 import useTask from '../../hooks/useTask'
-import TaskType1 from './TaskByType/TaskType1'
-import { TaskTypesProps } from '../../task.types'
+import TaskType1 from './TaskByType/TaskType1And2'
 import TaskType6 from './TaskByType/TaskType6'
+import TaskType3 from './TaskByType/TaskType3'
+import { TaskTypesProps } from './task.types'
 
 const LoadingComponent: React.FC = () => <p>Загрузка...</p>
 const taskByType: React.FC<TaskTypesProps>[] = [
   TaskType1,
-  LoadingComponent,
-  LoadingComponent,
+  TaskType1,
+  TaskType3,
   LoadingComponent,
   LoadingComponent,
   TaskType6,
@@ -41,9 +42,9 @@ const TaskContent: React.FC = () => {
   const TaskComponent: React.FC<TaskTypesProps> = taskByType[tempTask?.type]
 
   return (
-    <div className="task-content">
+    <>
       {tempTask && <TaskComponent task={tempTask} />}
-    </div>
+    </>
   )
 }
 

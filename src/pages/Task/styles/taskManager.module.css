@@ -22,3 +22,10 @@
 .footer__pb{
   margin: 0 auto;
 }
+
+.taskContent{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

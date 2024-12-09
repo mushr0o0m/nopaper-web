@@ -32,9 +32,19 @@ class AudioManager {
     this.audio.load()
   }
 
-  public play() {
+  public async play() {
+    await this.loadPromise
     this.isPlaying = true
     this.audio.play()
+  
+    return new Promise((res) => {
+      const onEnded = () => {
+        this.audio.removeEventListener('ended', onEnded)
+        res(true)
+      };
+  
+      this.audio.addEventListener('ended', onEnded)
+    })
   }
 
   public async pause() {

@@ -12,6 +12,7 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: FC<ProgressBarProps> = ({ progress, currentTaskIndex, className='' }) => {
+  console.log(progress)
   return (
     <div className={styles.bar + ' ' + className}>
       {Object.values(progress).map((item, index) =>

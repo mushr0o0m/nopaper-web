@@ -1,0 +1,41 @@
+.taskContent {
+  padding: 0 140px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainImg {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 300px;
+}
+
+.taskList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  gap: 15px;
+}
+
+.taskContent_type2 {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mainImg_type2 {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 350px;
+  width: 350px;
+}
+
+.taskList_type2 {
+  flex-direction: row;
+}

@@ -1,16 +1,21 @@
-import eventBus from "@/eventBus"
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useRef } from "react"
 import styles from './styles/index.module.css'
+import { IImageMatchTask } from "@/pages/Task/exercise.types"
+import DraggableWord from "../../../Dnd/DraggableWord"
+import solveStartService from "../../../Dnd/SolveTaskService"
+import { TaskTypesProps } from "../../task.types"
+import useSettingsMethods from "@/pages/Settings/hooks/useSettingsMethods"
 
-const TaskType6: React.FC<TaskTypesProps<ISimpleTask>> = ({ task }) => {
-  const droppable = useRef<HTMLDivElement>(null)
-  const taskId = task.id
+const TaskType6: React.FC<TaskTypesProps<IImageMatchTask>> = ({ task }) => {
+  const droppables = useRef<HTMLDivElement[]>([])
+  const {saveUserProgress} = useSettingsMethods()
 
-  const onDragEnd = useCallback((droppedAt: Element | null, wordText: ITextOption): { status: 'success' | 'error' | 'isBlank' } => {
-    if (droppable.current === droppedAt) {
-      solveStartService.handleSolve(taskId, wordText.rightAnswer)
-      eventBus.emit('onTaskFinish', {})
-      return wordText.rightAnswer ? { status: 'success' } : { status: 'error' }
+  const onDragEnd = useCallback((droppedAt: Element | null): { status: 'success' | 'error' | 'isBlank'} => {
+    const tempImageIndex = droppables.current.findIndex(i => i === droppedAt)
+    if (tempImageIndex !== -1) {
+      solveStartService.handleSolve(task.id, task.images[tempImageIndex].rightAnswer, saveUserProgress)
+      return task.images[tempImageIndex].rightAnswer ? { status: 'success' } : { status: 'error' }
     }
     return { status: 'isBlank' }
   }, [])
@@ -20,29 +25,25 @@ const TaskType6: React.FC<TaskTypesProps<ISimpleTask>> = ({ task }) => {
   }, [])
 
   return (
-    <>
-      <div className={styles.taskContent}>
-        <div
-          ref={droppable}
-          style={{
-            backgroundImage: `url(${encodeURI(task.images[0].file)})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '300px',
-            width: '300px'
-          }}></div>
-        <div className={styles.taskList}>
-          {task.answerOptions.map((item, index) => (
-            <DraggableWord
-              key={index}
-              text={item}
-              onDragEnd={onDragEnd}
-            />
-          ))}
-        </div>
+    <div className={styles.taskContent}>
+      <div className={styles.taskList}>
+        <DraggableWord
+          text={task.wordToMatch}
+          onDragEnd={onDragEnd}
+        />
       </div>
-    </>
+      <div className={styles.imges}>
+        {task.images.map((image) => (
+          <div
+            key={image.id}
+            className={styles.img}
+            ref={el => droppables.current.push(el)}
+            style={{
+              backgroundImage: `url(${encodeURI(image.file)})`
+            }}></div>
+        ))}
+      </div>
+    </div>
   )
 }
 

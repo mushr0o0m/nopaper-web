@@ -1,4 +1,4 @@
-import { ITask } from "./exercise.types";
+import { ITask } from "../../exercise.types"
 
 
 export interface TaskTypesProps<T extends ITask = ITask> {

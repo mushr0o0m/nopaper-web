@@ -11,3 +11,25 @@
   position: relative;
   text-align: center;
 }
+
+.taskWord__wrong{
+  animation: wrong 1s ease;
+}
+
+@keyframes wrong {
+  from, to {
+    rotate: z 0deg;
+  }
+  /* 6.25%, 31.25%, 56.25%, 81.25% {
+    rotate: z 10deg;
+  }
+  18.75%, 43.75%, 68.75%, 93.75% {
+    rotate: z -10deg;
+  } */
+  10%, 30%, 50%, 70%, 90% {
+    rotate: z 10deg;
+  }
+  20%, 40%, 60%, 80% {
+    rotate: z -10deg;
+  }
+}

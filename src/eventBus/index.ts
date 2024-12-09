@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Bus, EventBus, EventBusEventsMap, EventMap} from "@/eventBus/eventBus.types";
 
 
