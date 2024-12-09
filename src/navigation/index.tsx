@@ -1,28 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import NotFound from '@/pages/404/NotFound';
-import AuthorizationPage from '@/pages/Authorization';
-import useAuthMethods from '@/pages/Authorization/hooks/useAuthMethods';
-import GroupMenu from '@/pages/GroupMenu';
-import LevelMenu from '@/pages/LevelMenu';
-import Settings from '@/pages/Settings';
-import useSettingsMethods from '@/pages/Settings/hooks/useSettingsMethods';
-import TaskManager from '@/pages/Task';
-import useExercisesLoad from '@/pages/Task/hooks/useExercisesLoad';
-import TaskContent from '@/pages/Task/modules/TaskContent';
-import TestDnd from '@/pages/TestDnd/TestDnd';
-import Welcome from '@/pages/Welcome/Welcome';
-import Loader from '@/shared/PageLoader';
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NotFound from '@/pages/404/NotFound'
+import AuthorizationPage from '@/pages/Authorization'
+import GroupMenu from '@/pages/GroupMenu'
+import LevelMenu from '@/pages/LevelMenu'
+import Settings from '@/pages/Settings'
+import TaskManager from '@/pages/Task'
+import TaskContent from '@/pages/Task/modules/TaskContent'
+import TestDnd from '@/pages/TestDnd/TestDnd'
+import Welcome from '@/pages/Welcome/Welcome'
+import Loader from '@/shared/PageLoader'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const AppRouter: React.FC = () => {
-  const { guestInit } = useAuthMethods()
-  const { loadUser } = useSettingsMethods()
-  const { loadExercises } = useExercisesLoad()
-
-  useEffect(() => {
-    Promise.all([guestInit(), loadUser(), loadExercises()]).catch(() => {})
-  }, [])
 
   return (
     <Router>

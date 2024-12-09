@@ -20,8 +20,8 @@ const TaskType1: React.FC<TaskTypesProps<ISimpleTask>> = ({ task }) => {
   }, [])
 
   useEffect(() => {
-    solveStartService.startSolveTask(task?.audio[0])
-  }, [taskId])
+    solveStartService.startSolveTask(task.audio[0])
+  }, [])
 
   return (
     <>
@@ -41,7 +41,7 @@ const TaskType1: React.FC<TaskTypesProps<ISimpleTask>> = ({ task }) => {
             <DraggableWord
               key={index}
               text={item}
-              onDragEnd={onDragEnd} 
+              onDragEnd={onDragEnd}
             />
           ))}
         </div>

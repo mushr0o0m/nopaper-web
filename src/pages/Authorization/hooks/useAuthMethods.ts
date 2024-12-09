@@ -2,12 +2,15 @@ import { useSetRecoilState } from 'recoil'
 import authAtom from '@/pages/Authorization/auth.atom'
 import authApi from '@/pages/Authorization/auth.api'
 import { HTTPResponse } from '@/services/http/http.types'
-import { AuthResponse, IUser } from '../auth.types'
+import { AuthResponse } from '../auth.types'
 import useSettingsMethods from '@/pages/Settings/hooks/useSettingsMethods'
+import { IUser } from '@/pages/Settings/user.types'
+import useExercisesLoad from '@/pages/Task/hooks/useExercisesLoad'
 
-const useAuthMethods = () => {
+const  useAuthMethods = () => {
   const setAuthData = useSetRecoilState(authAtom)
   const { loadUser } = useSettingsMethods()
+  const { loadExercises } = useExercisesLoad()
 
   const signIn = async (email: string): Promise<HTTPResponse<Pick<IUser, 'id'>>> => {
     const resp = await authApi.loginUser(email)
@@ -22,6 +25,10 @@ const useAuthMethods = () => {
     setAuthData((prev) => ({ ...prev, isAuth: true, access: response.body.access }))
     localStorage.setItem('refresh', response.body.refresh)
     localStorage.setItem('access', response.body.access)
+
+    await loadExercises()
+    await loadUser()
+
     return response
   }
 

@@ -9,8 +9,8 @@ class SolveTaskService {
   }
 
   public async startSolveTask(audio: IAudio) {
-    audioManager.setNewSrc(audio?.file)
-    await audioManager.play()
+    await audioManager.setNewSrc(audio.file)
+    audioManager.play()
     this.isDragDisabled = false
   }
 }

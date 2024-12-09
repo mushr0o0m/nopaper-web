@@ -1,7 +1,7 @@
 class AudioManager {
   private isPlaying: boolean = false
   private audio: HTMLAudioElement
-  private playPromise: Promise<void>
+  private loadPromise: Promise<boolean>
 
   constructor() {
     this.audio = new Audio()
@@ -13,35 +13,34 @@ class AudioManager {
     this.audio.addEventListener('ended', () => {
       this.isPlaying = false
     })
-  }
 
-  public setNewSrc(src: string) {
-    console.log(this.isPlaying, this.playPromise)
-    if (this.playPromise !== undefined) {
-      this.playPromise.then(_ => {
-        this.audio.src = src
-        this.audio.load()
+    this.audio.addEventListener('loadstart', () => {
+      this.loadPromise = new Promise((res, rej) => {
+        setTimeout(() => rej('Failed to load'), 5_000)
+        const listener = () => {
+          res(true)
+          this.audio.removeEventListener('progress', listener)
+        }
+        this.audio.addEventListener('progress', listener)
       })
-      .catch(() => {})
-    } else {
-      this.audio.src = src
-      this.audio.load()
-    }
+    })
+  }
+  
+  public async setNewSrc(src: string) {
+    await this.pause()
+    this.audio.src = src
+    this.audio.load()
   }
 
-  public async play() {
+  public play() {
     this.isPlaying = true
-    await this.audio.play()
+    this.audio.play()
   }
 
-  public pause() {
+  public async pause() {
     if (this.isPlaying) {
-      if (this.playPromise !== undefined) {
-        this.playPromise.then(_ => {
-          this.audio.pause();
-        })
-        .catch(() => {})
-      }
+      await this.loadPromise
+      this.audio.pause()
     }
   }
 }

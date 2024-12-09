@@ -1,10 +1,6 @@
 import eventBus from "@/eventBus"
 import React, { useCallback, useEffect, useRef } from "react"
 import styles from './styles/index.module.css'
-import { ISimpleTask, ITextOption } from "@/pages/Task/exercise.types"
-import { TaskTypesProps } from "@/pages/Task/task.types"
-import DraggableWord from "@/pages/TestDnd/DraggableWord"
-import solveStartService from "@/pages/TestDnd/SolveTaskService"
 
 const TaskType6: React.FC<TaskTypesProps<ISimpleTask>> = ({ task }) => {
   const droppable = useRef<HTMLDivElement>(null)

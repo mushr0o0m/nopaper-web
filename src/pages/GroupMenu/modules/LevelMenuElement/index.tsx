@@ -9,7 +9,7 @@ interface LevelMenuElementProps {
   linkTo: string
   title: string
   colorIndex: number
-  progress: IUserProgress
+  progress?: IUserProgress
   isActive: boolean
   isLock: boolean
 }
@@ -22,8 +22,8 @@ const LevelMenuElement: React.FC<LevelMenuElementProps> = ({
   title,
   progress,
 }) => {
+  const isScoreBarIsOn = progress ? Object.values(progress).filter(v => v !== null).length > 0 : false
 
-  const isScoreBarIsOn = Object.values(progress).filter(v => v !== null).length > 0
   return (
     <Link
       to={linkTo}

@@ -23,11 +23,11 @@ const GroupMenu: React.FC = () => {
   const groups = useSetGroups(setId)
   const tempSetIndex = setIds?.findIndex((e) => e === setId)
 
-//  console.log(progressByGroup)
   if (!setId) {
     navigate('/404')
     return null
   }
+  
   return (
     <>
       {userData.user?.isGuest === false && <SetMenu />}
@@ -39,9 +39,9 @@ const GroupMenu: React.FC = () => {
               key={group.id}
               colorIndex={index + 1}
               isLock={userData.user?.isGuest && group.premium}
-              isActive={group.id === arr[0].id || progress[arr[index - 1].id].solvedTasks >= 7}
+              isActive={group.id === arr[0].id || progress[arr[index - 1].id]?.solvedTasks >= 7}
               title={`${levelCharIndexByLevelId[levelId]}${index + 1 + 10 * tempSetIndex}`} 
-              progress={progress[group.id].progress}
+              progress={progress[group.id]?.progress}
             />
           ))}
         </section>

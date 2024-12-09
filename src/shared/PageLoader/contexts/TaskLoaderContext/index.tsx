@@ -1,7 +1,9 @@
-import React, { createContext } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { createContext, useEffect, useState } from "react"
 import Loader from "@/shared/PageLoader"
-import { useRecoilValue } from "recoil"
-import { exerciseState } from "@/pages/Task/exercise.atom"
+import useAuthMethods from "@/pages/Authorization/hooks/useAuthMethods"
+import useSettingsMethods from "@/pages/Settings/hooks/useSettingsMethods"
+import useExercisesLoad from "@/pages/Task/hooks/useExercisesLoad"
 
 interface TaskLoaderProviderProps {
   children: React.ReactNode
@@ -10,12 +12,19 @@ interface TaskLoaderProviderProps {
 const TaskLoaderContext = createContext(null)
 
 const TaskLoaderProvider: React.FC<TaskLoaderProviderProps> = ({ children }) => {
-  const data = useRecoilValue(exerciseState)
 
+  const [loadingFinish, setLoadingFinish] = useState(false)
+  const { guestInit } = useAuthMethods()
+  const { loadUser } = useSettingsMethods()
+  const { loadExercises } = useExercisesLoad()
+
+  useEffect(() => {
+    Promise.all([guestInit(), loadUser(), loadExercises()]).finally(() => setLoadingFinish(true))
+  }, [])
 
   return (
     <TaskLoaderContext.Provider value={null}>
-      {data.isPackRequested ? <Loader /> : children}
+      {!loadingFinish ? <Loader /> : children}
     </TaskLoaderContext.Provider>)
 }
 
