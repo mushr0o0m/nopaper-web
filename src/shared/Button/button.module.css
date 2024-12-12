@@ -1,16 +1,26 @@
 .btn {
-    font-size: 48px;
-    color: var(--dark-grey);
-    background-color: transparent;
-    border: none;
-    padding: 0;
+  font-size: 48px;
+  color: var(--dark-grey);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
 
-    cursor: pointer;
-    width: 194px;
-    height: 78px;
+.word {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.word__text{
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .disabled {
-    pointer-events: none;
-    opacity: 0.7;
+  pointer-events: none;
+  opacity: 0.7;
 }

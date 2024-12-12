@@ -30,6 +30,11 @@ class SolveTaskService {
     this.isDragDisabled = false
   }
 
+  public stopSolveTask() {
+    audioManager.pause()
+    this.isDragDisabled = false
+  }
+
   private getSrcSolveSound(isRigthAnswered: boolean){
     const soundNum = isRigthAnswered ? SOUND_COUNT.RIGHT_SOUND_NUM : SOUND_COUNT.WRONG_SOUND_NUM
     const soundIndex = Math.floor(Math.random() * (soundNum - 1) + 1)

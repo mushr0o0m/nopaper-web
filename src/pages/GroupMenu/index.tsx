@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './styles/groupMenu.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
+import { constSelector, useRecoilValue } from 'recoil'
 import exerciseSelectors from '../Task/exercise.selectors'
 import LevelMenuElement from './modules/LevelMenuElement'
 import SetMenu from '../SetMenu'
 import settingsAtom from '../Settings/settings.atom'
 import settingsSelectors from '../Settings/settings.selectors'
 import useSetGroups from '../Task/hooks/useSetGroups'
+import { ITaskGroup } from '../Task/exercise.types'
+import StartGrouplModal from './components/StartGrouplModal'
 
 const levelCharIndexByLevelId: Record<string, string> = {
   'first_level': 'A',
@@ -15,6 +17,8 @@ const levelCharIndexByLevelId: Record<string, string> = {
 }
 
 const GroupMenu: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const tempGroupId = useRef<ITaskGroup['id']>()
   const progress = useRecoilValue(settingsSelectors.getProgressByGroups)
   const userData = useRecoilValue(settingsAtom)
   const { setId, levelId } = useParams()
@@ -28,14 +32,25 @@ const GroupMenu: React.FC = () => {
     return null
   }
   
+
+  const levelMenuElHandle = (groupId: ITaskGroup['id']) => {
+    tempGroupId.current = groupId
+    setIsModalOpen(true)
+  }
+
+  const outsideModalHandler = () => {
+    setIsModalOpen(false)
+  }
+  
   return (
     <>
+      <StartGrouplModal linkTo={`${tempGroupId.current}/task`} isOpen={isModalOpen} outsideModalHandler={outsideModalHandler} />
       {userData.user?.isGuest === false && <SetMenu />}
       <div className={styles.pageWrapper}>
         <section className={styles.wrapper}>
           {groups?.map((group, index, arr) => (
             <LevelMenuElement
-              linkTo={`${group.id}/task`}
+            levelMenuElHandle={() => levelMenuElHandle(group.id)}
               key={group.id}
               colorIndex={index + 1}
               isLock={userData.user?.isGuest && group.premium}

@@ -11,6 +11,8 @@ import useGroupTasks from './hooks/useGroupTasks'
 import ProgressBar from '@/pages/Task/components/ProgressBar'
 import settingsSelectors from '../Settings/settings.selectors'
 import eventBus from '@/eventBus'
+import BackBtn from './components/Buttons/BackButton'
+import SoundReplay from './components/Buttons/SoundReplay'
 
 const TaskManager: React.FC = () => {
   const data = useRecoilValue(exerciseSelectors.getExerciseDataByUserStatus)
@@ -49,23 +51,23 @@ const TaskManager: React.FC = () => {
 
   const tempIndexGroup = groupId ? groupIds.indexOf(groupId) + 1 : -1
 
+
   return (
     <div className="container">
       <div className={styles.window}>
-        <header>
-          <SmallButton
-            onClick={() => navigate('../..', { replace: true, relative: 'path' })}
-            isColored={false}>
-            назад
-          </SmallButton>
-          <SmallButton
-            onClick={() => {
-              taskIndex.current += 1
-              navigateToTempTaskContent(groupTasks[taskIndex.current].id)
-            }}
-            isColored={false}>
-            вперед
-          </SmallButton>
+        <header className={styles.btnGroup}>
+          <div>
+            <BackBtn color={tempIndexGroup} onClick={() => { navigate('../..', { replace: true, relative: 'path' }) }} />
+            <SmallButton
+              onClick={() => {
+                taskIndex.current += 1
+                navigateToTempTaskContent(groupTasks[taskIndex.current].id)
+              }}
+              isColored={false}>
+              вперед
+            </SmallButton>
+          </div>
+          <SoundReplay color={tempIndexGroup} />
         </header>
         <section className={styles.taskContent}>
           <Outlet />

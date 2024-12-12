@@ -1,0 +1,27 @@
+.btn {
+  background-color: transparent;
+  line-height: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  padding: 7px;
+  margin-right: 30px;
+}
+
+.btn__svg {
+  line-height: 0;
+  filter: brightness(1);
+  transition: filter 0.3s ease;
+}
+
+.btn__svg:focus{
+  filter: brightness(0.8);
+}
+
+.btn__svg:hover{
+  filter: brightness(0.8);
+}
+
+.btn__svg:active{
+  filter: brightness(0.7);
+}

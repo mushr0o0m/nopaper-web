@@ -1,0 +1,68 @@
+@keyframes fadeOut {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes show {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.container{
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.container.disabled{
+  animation: fadeOut 0.15s linear forwards;
+}
+.container.enabled{
+  display: block;
+  animation: show 0.15s linear forwards;
+}
+
+.modal{
+  position: relative;
+  height: calc(100% - 30px * 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  width: 600px;
+  z-index: 5010;
+}
+
+.modalContent{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 50px 30px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  /* border: 2px dashed var(--gray); */
+  border-radius: 10px;
+  background: url(/src/assets/backgrounds/bg-1.jpg);
+}
+
+
+

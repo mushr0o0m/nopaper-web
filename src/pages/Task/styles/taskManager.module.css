@@ -6,6 +6,11 @@
   height: 100vh;
 }
 
+.btnGroup{
+  display: flex;
+  justify-content: space-between;
+}
+
 .footer{
   display: flex;
 }

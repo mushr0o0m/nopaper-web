@@ -23,8 +23,17 @@ body {
 }
 
 .no-select {
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE/Edge */
-  user-select: none; /* Стандартный синтаксис */
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+button{
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }

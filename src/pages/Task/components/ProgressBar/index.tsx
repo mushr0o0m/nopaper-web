@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styles from './styles/index.module.css'
 import { IUserProgress } from '@/pages/Settings/user.types'
 import Dot from '@/assets/svg/progressBar/dot.svg?react'
-import colorByProgress from '@/utils/colorByProgress'
+import colorByProgress from '@/pages/Task/utils/colorByProgress'
 
 
 interface ProgressBarProps {
@@ -12,7 +12,6 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: FC<ProgressBarProps> = ({ progress, currentTaskIndex, className='' }) => {
-  console.log(progress)
   return (
     <div className={styles.bar + ' ' + className}>
       {Object.values(progress).map((item, index) =>

@@ -39,6 +39,14 @@ const TaskContent: React.FC = () => {
     }
   }, [task])
 
+  useEffect(() => {
+    const handleDragStart = (event: DragEvent) => event.preventDefault()
+    window.addEventListener("dragstart", handleDragStart)
+    return () => {
+      window.removeEventListener("dragstart", handleDragStart)
+    };
+  }, [])
+
   const TaskComponent: React.FC<TaskTypesProps> = taskByType[tempTask?.type]
 
   return (

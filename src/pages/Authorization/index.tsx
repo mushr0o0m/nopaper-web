@@ -34,10 +34,6 @@ const AuthPage: React.FC = () => {
     })
   }
 
-  const goBackHandler = () => {
-    navigate(-1)
-  }
-
   useEffect(() => {
     const interval = setInterval(() => {
       setTick((prevValue) => (prevValue - 1) % 3)
@@ -73,7 +69,7 @@ const AuthPage: React.FC = () => {
   return (
     <div className={styles.loginPage}>
       <div className={styles.returnButton}>
-        <Button onClick={() => goBackHandler()}>Назад</Button>
+        <Button onClick={() => navigate(-1)}>Назад</Button>
       </div>
       <div className={styles.loginData}>
         <div className={styles.loginCard}>

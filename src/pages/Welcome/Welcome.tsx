@@ -1,7 +1,6 @@
 import React from "react";
 import styles from './style/welcome.module.css';
 import { ClockSvg, GlassesSvg, HandsSvg, HeartSvg } from './svg/index';
-import { Link } from "react-router-dom";
 import Button from "@/shared/Button";
 
 const Welcome: React.FC = () => {
@@ -60,8 +59,8 @@ const Welcome: React.FC = () => {
             ПОПРОБОВАТЬ ПРИЛОЖЕНИЕ БЕСПЛАТНО.
           </p>
           <div className={styles.section__buttons}>
-            <Link to="/level-menu" className={styles.btn}>Купить подписку</Link>
-            <Link to="/level-menu" className={styles.btn}>Попробовать бесплатно</Link>
+            <Button linkTo="/level-menu">Купить подписку</Button>
+            <Button linkTo="/level-menu">Попробовать бесплатно</Button>
           </div>
         </div>
       </section>
@@ -72,8 +71,8 @@ const Welcome: React.FC = () => {
               ВОЗМОЖНОСТЯМИ ПРИЛОЖЕНИЯ, МЫ ПРЕДЛАГАЕМ ВАМ АВТОРИЗОВАТЬСЯ.</b>
           </p>
           <div className={styles.section__buttons}>
-            <Link to="/auth" className={styles.btn}>Авторизоваться</Link>
-            <Link to="/level-menu" className={styles.btn}>Начать без авторизации</Link>
+            <Button linkTo="/auth">Авторизоваться</Button>
+            <Button linkTo="/level-menu">Начать без авторизации</Button>
           </div>
         </div>
       </section>

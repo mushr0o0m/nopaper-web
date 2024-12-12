@@ -98,6 +98,8 @@ const DraggableWord: React.FC<IDraggableWord> = ({ text, onDragEnd }) => {
       ref={wordRef}
       className={styles.taskWord + ' no-select'}
       draggable={false}
+      onDragStart={() => false}
+      onDrop={() => false}
     >
       {text.text}
       <Lottie
@@ -111,7 +113,8 @@ const DraggableWord: React.FC<IDraggableWord> = ({ text, onDragEnd }) => {
           pointerEvents: 'none'
         }}
         className="no-select"
-        animationData={successLottie} loop={true} />
+        animationData={successLottie} 
+        loop={false} />
     </div>
   )
 }
